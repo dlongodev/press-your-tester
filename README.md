@@ -1,14 +1,5 @@
-# press-your-tester
-## Project Choice (Tell us which project you're doing!)
-
-The game is called: **PRESS YOUR TESTER**
+# The game is called: **PRESS YOUR TESTER**
 *Based on the 1980's TV Show "Press Your Luck"*
-
-- [ ] Flash Cards
-- [x] Trivia + added features
-- [ ] Spaceman
-- [ ] Tower of Hanoi
-- [ ] Simon
 
 ## Project Description 
 You are a Software Engineer looking to get paid **BIG BUCKS for** the code you wrote. But before you get paid, you have to **PRESS YOUR TESTER!** First, you answer 3 multiple choice questions to prove your worth, each correct answer gives you 3 chances with the TESTER, a wrong answer will only get you 1 chance for each. This tester can find some **NASTY BUGS!** The goal is to make the most money you can without *"bugging out"* -- 4 BUGS in your code and you lose! You have a chance to deliver your code by choosing to STOP CODING button anytime and getting paid what you got so far. GOOD LUCK!
