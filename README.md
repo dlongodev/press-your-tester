@@ -1,4 +1,4 @@
-# The game is called: **PRESS YOUR TESTER**
+# PRESS YOUR TESTER
 *Based on the 1980's TV Show "Press Your Luck"*
 
 ## Project Description 
