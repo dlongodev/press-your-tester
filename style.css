@@ -19,6 +19,13 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: hsla(49, 93%, 67%, 1);
+  color: hsla(20, 6%, 9%, 1);
+}
+
+button:active,
+button:focus,
+button:hover {
+  outline: none;
 }
 
 main {
@@ -91,7 +98,7 @@ img {
 }
 
 .play-btn {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   font-weight: 700;
@@ -101,10 +108,12 @@ img {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-  width: 15rem;
-  height: 8rem;
+  /* width: 15rem;
+  height: 8rem; */
+  padding: 2rem 3rem;
   border-radius: 2rem;
   border: none;
+  margin: 2rem;
 }
 
 .play-btn:active {
@@ -147,11 +156,12 @@ img {
   border-radius: 20px;
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
 }
-.center-box::before {
+/* .center-box::after {
   content: "";
   background-image: url("imgs/press-your-tester_logo.png");
   background-size: cover;
@@ -160,7 +170,32 @@ img {
   top: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.1;
+  opacity: 0.05;
+} */
+
+.answer-btn {
+  width: 95%;
+  margin: 1rem;
+  font-size: 1.3rem;
+  padding: 1rem 0;
+  border: solid 2px #fff;
+  background-color: rgba(244, 235, 235, 0.8);
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.answer-btn:hover {
+  border-color: hsla(20, 6%, 9%, 1);
+}
+.correct {
+  background-color: rgba(42, 171, 13, 0.8);
+  border-color: rgba(33, 138, 10);
+  color: rgb(213, 244, 200);
+}
+.wrong {
+  background-color: hsla(358, 65%, 46%, 0.8);
+  border-color: rgb(121, 24, 27);
+  color: rgb(249, 197, 197);
 }
 
 .hide {
