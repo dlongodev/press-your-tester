@@ -33,15 +33,15 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 100vw;
-  height: 80vh;
+  /* max-width: 100vw;s */
+  /* height: 80vh; */
   font-family: "Poppins", sans-serif;
 }
 
 /* container loading animation */
 .container {
-  margin-top: 25px;
-  font-size: 21px;
+  padding-top: 4rem;
+  font-size: 8rem;
   text-align: center;
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
@@ -122,15 +122,15 @@ img {
   transform: translateY(4px);
 }
 .game-container {
-  width: 750px;
-  height: 600px;
+  width: 48rem;
+  height: 40rem;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: 15px;
+  gap: 1rem;
   background-color: #d62828ff;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
 }
 .box {
   background-color: rgb(121, 24, 27);
@@ -159,7 +159,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  /* font-size: 2rem; */
 }
 /* .center-box::after {
   content: "";
@@ -172,12 +172,15 @@ img {
   height: 100%;
   opacity: 0.05;
 } */
-
+.btn-flex {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .answer-btn {
-  width: 95%;
   margin: 1rem;
   font-size: 1.3rem;
-  padding: 1rem 0;
+  padding: 1rem;
   border: solid 2px #fff;
   background-color: rgba(244, 235, 235, 0.8);
   font-weight: 700;
@@ -200,4 +203,13 @@ img {
 
 .hide {
   display: none;
+}
+
+/* bottom controls */
+
+.controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

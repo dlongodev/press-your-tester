@@ -1,58 +1,86 @@
 // Multiple Choice Question Round
-const questionContainerElement = document.querySelector("#question-container")
-const answerButtonsElement = document.querySelector("#answer-buttons")
+const questionContainer = document.querySelector("#question-container")
+const answerButtons = document.querySelector("#answer-buttons")
 const nextButton = document.querySelector("#next-btn")
-let questionElement = document.querySelector("#question")
-let shuffleQuestions, currentQuestionIndex
-let chances = 0
+const goToTesterButton = document.querySelector("#begin-tester")
+let questionText = document.querySelector("#question")
+let mixUpQuestions
+let currentQuestionIndex
+let testerChances = 0
+let questionCount = 0
 
+nextButton.addEventListener("click", () => {
+    currentQuestionIndex++
+    getNextQuestion()
+})
 
-function startGame() {
-    shuffleQuestions = questions.sort(() => Math.random() - .5)
+// start game -> remove hide class from question and choices 
+
+const startGame = () => {
+    mixUpQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
-    questionContainerElement.classList.remove("hide")
-    answerButtonsElement.classList.remove("hide")
-    setNextQuestion()
+    questionContainer.classList.remove("hide")
+    answerButtons.classList.remove("hide")
+    getNextQuestion()
 
 }
 
-function setNextQuestion() {
+// mixing up questions and remove previous choices from container
+const getNextQuestion = () => {
     resetState()
-    showQuestion(shuffleQuestions[currentQuestionIndex])
+    displayQuestion(mixUpQuestions[currentQuestionIndex])
 }
 
-function showQuestion(question) {
-    questionElement.innerText = question.question
+const resetState = () => {
+    nextButton.classList.add("hide")
+    while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild)
+    }
+}
+
+// display the question and set if correct answer
+
+const displayQuestion = (question) => {
+    questionText.innerText = question.question
     question.answers.forEach(answer => {
         const button = document.createElement("button")
         button.innerText = answer.text
         button.classList.add("answer-btn")
         if (answer.correct) {
             button.dataset.correct = answer.correct
-            // console.log(answer.correct)
+            button.dataset.chances = answer.chances
+        } else {
+            button.dataset.chances = answer.chances
         }
         button.addEventListener("click", selectAnswer)
-        answerButtonsElement.appendChild(button)
+        answerButtons.appendChild(button)
     })
 }
 
-function resetState() {
-    nextButton.classList.add("hide")
-    while (answerButtonsElement.firstChild) {
-        answerButtonsElement.removeChild(answerButtonsElement.firstChild)
-    }
-}
-
-function selectAnswer(e) {
+// event listener for selecting answer
+const selectAnswer = (e) => {
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
+    const chancesAmount = selectedButton.dataset.chances
+    testerChances += (parseInt(chancesAmount))
+    console.log(testerChances)
     setStatusClass(document.querySelector(".answer-btn"), correct)
-    Array.from(answerButtonsElement.children).forEach(button => {
+    Array.from(answerButtons.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+    if (mixUpQuestions.length > currentQuestionIndex + 1) {
+        nextButton.classList.remove("hide")
+    } else {
+        nextButton.classList.add("hide")
+        goToTesterButton.classList.remove("hide")
+    }
+
+
 }
 
-function setStatusClass(element, correct) {
+// setting styles for right or wrong
+
+const setStatusClass = (element, correct) => {
     clearStatusClass(element)
     if (correct) {
         element.classList.add("correct")
@@ -61,11 +89,13 @@ function setStatusClass(element, correct) {
     }
 }
 
-function clearStatusClass(element) {
+// clearing up the status for next question
+const clearStatusClass = (element) => {
     element.classList.remove("correct")
     element.classList.remove("wrong")
 }
 
+// set questions in array of objects
 const questions = [
     {
         question: "What is 2 + 2?",
@@ -76,14 +106,32 @@ const questions = [
         ]
     },
     {
-        question: "What is 3 + 3?",
+        question: "What is 4 + 4?",
         answers: [
-            { text: "4", correct: false, chances: 1 },
-            { text: "6", correct: true, chances: 3 },
-            { text: "22", correct: false, chances: 1 }
+            { text: "16", correct: false, chances: 1 },
+            { text: "8", correct: true, chances: 3 },
+            { text: "44", correct: false, chances: 1 }
+        ]
+    },
+    {
+        question: "What is 5 + 5?",
+        answers: [
+            { text: "25", correct: false, chances: 1 },
+            { text: "10", correct: true, chances: 3 },
+            { text: "55", correct: false, chances: 1 }
+        ]
+    },
+    {
+        question: "What is 6 + 6?",
+        answers: [
+            { text: "36", correct: false, chances: 1 },
+            { text: "12", correct: true, chances: 3 },
+            { text: "66", correct: false, chances: 1 }
         ]
     }
+
 ]
 
-
 startGame()
+
+// start Tester Game Here
