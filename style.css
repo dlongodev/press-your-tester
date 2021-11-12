@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Poppins:wght@300;700&display=swap');
 /* CSS HEX */
 :root {
   --eerie-black: #191716ff;
@@ -28,20 +27,14 @@ button:hover {
   outline: none;
 }
 
-main {
+/* container loading animation */
+.container {
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* max-width: 100vw;s */
-  /* height: 80vh; */
-  font-family: "Poppins", sans-serif;
-}
-
-/* container loading animation */
-.container {
   padding-top: 4rem;
-  font-size: 8rem;
   text-align: center;
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
@@ -84,11 +77,11 @@ main {
   }
 }
 .logo {
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 50px 5px;
-  text-align: center;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* width: 80%; */
+  padding: 60px 0;
+  /* text-align: center; */
 }
 .opacity {
   opacity: 20%;
@@ -96,6 +89,7 @@ main {
 img {
   width: 60%;
 }
+
 
 .play-btn {
   font-size: 1.5rem;
@@ -113,7 +107,7 @@ img {
   padding: 2rem 3rem;
   border-radius: 2rem;
   border: none;
-  margin: 2rem;
+  margin: 0.5rem;
 }
 
 .play-btn:active {
@@ -208,8 +202,8 @@ img {
 /* bottom controls */
 
 .controls {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 48rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2rem;
 }
