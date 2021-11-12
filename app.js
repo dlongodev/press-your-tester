@@ -6,6 +6,7 @@ const answerButtons = document.querySelector("#answer-buttons");
 const nextButton = document.querySelector("#next-btn");
 const testerButton = document.querySelector("#tester");
 let questionText = document.querySelector("#question");
+const messageBox = document.querySelector("#message")
 let mixUpQuestions;
 let currentQuestionIndex;
 let testerChances = 0;
@@ -75,8 +76,10 @@ const selectAnswer = (e) => {
     } else {
         nextButton.classList.add("hide");
         testerButton.classList.remove("hide");
-        setTimeout(() => { questionContainer.classList.add("hide") }, 1000);
-        setTimeout(() => { answerButtons.classList.add("hide") }, 1000);
+        questionContainer.classList.add("hide")
+        answerButtons.classList.add("hide")
+        messageBox.classList.remove("hide")
+        messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin!`
     }
     if (e.target.dataset.correct == "true") {
         questionText.innerText = "Correct Answer!"
@@ -139,3 +142,7 @@ const questions = [
 startGame();
 
 // start Tester Game Here
+
+const startTester = () => {
+
+}
