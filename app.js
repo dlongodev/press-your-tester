@@ -6,11 +6,17 @@ const answerButtons = document.querySelector("#answer-buttons");
 const nextButton = document.querySelector("#next-btn");
 const testerButton = document.querySelector("#tester");
 let questionText = document.querySelector("#question");
-const messageBox = document.querySelector("#message")
+const messageBox = document.querySelector("#message");
+const chancesBox = document.querySelector(".chances-box");
+let chancesText = document.querySelector("#chances");
+const moneyBox = document.querySelector(".money-box");
+let totalMoney = document.querySelector("#total-money");
+
 let mixUpQuestions;
 let currentQuestionIndex;
 let testerChances = 0;
 let questionCount = 0;
+
 
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++;
@@ -24,6 +30,7 @@ const startGame = () => {
     currentQuestionIndex = 0;
     questionContainer.classList.remove("hide");
     answerButtons.classList.remove("hide");
+    chancesBox.classList.remove("hide")
     getNextQuestion();
 };
 
@@ -66,7 +73,7 @@ const selectAnswer = (e) => {
     const correct = selectedButton.dataset.correct;
     const chancesAmount = selectedButton.dataset.chances;
     testerChances += parseInt(chancesAmount);
-    console.log(testerChances);
+    chancesText.innerText = testerChances
     setStatusClass(document.querySelector(".answer-btn"), correct);
     Array.from(answerButtons.children).forEach((button) => {
         setStatusClass(button, button.dataset.correct);
@@ -76,15 +83,35 @@ const selectAnswer = (e) => {
     } else {
         nextButton.classList.add("hide");
         testerButton.classList.remove("hide");
-        questionContainer.classList.add("hide")
-        answerButtons.classList.add("hide")
-        messageBox.classList.remove("hide")
-        messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin!`
+        document.querySelector(".question").classList.add("hide");
+        answerButtons.classList.add("hide");
+        messageBox.classList.remove("hide");
+        messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`;
+        moneyBox.classList.remove("hide");
+        showGameBoxes();
+
     }
     if (e.target.dataset.correct == "true") {
-        questionText.innerText = "Correct Answer!"
-    } else { questionText.innerText = "Wrong Answer!" }
+        questionText.innerText = "Correct Answer!";
+    } else { questionText.innerText = "Wrong Answer!"; }
 };
+
+// remove hide class from game boxes
+// console.log(document.querySelector(".game-container").childNodes)
+
+const showGameBoxes = () => {
+    const gameBoxes = document.querySelectorAll(".box")
+    gameBoxes.forEach(box => {
+        if (box.classList.contains("hide")) {
+            box.classList.remove("hide")
+        }
+    })
+    // for (let i = 0; i < gameBoxes.length; i++) {
+    //     if (gameBoxes[i].classList.contains("hide")) {
+    //         gameBoxes[i].classList.remove("hide")
+    //     }
+    // }
+}
 
 // setting styles for right or wrong
 
@@ -145,4 +172,4 @@ startGame();
 
 const startTester = () => {
 
-}
+};

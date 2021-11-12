@@ -232,6 +232,23 @@ img {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.control-display {
+  display: block;
+  background-color: hsla(20, 6%, 9%, 1);
+  color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px;
+  font-family: 'Codystar', sans-serif;
+  font-size: 2rem;
+  border: 10px solid rgb(234, 202, 64);
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 .hide {
