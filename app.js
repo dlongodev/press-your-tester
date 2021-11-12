@@ -4,7 +4,7 @@ console.log('%c PRESS YOUR TESTER', 'font-weight: bold; font-size: 20px;color: r
 const questionContainer = document.querySelector("#question-container");
 const answerButtons = document.querySelector("#answer-buttons");
 const nextButton = document.querySelector("#next-btn");
-const goToTesterButton = document.querySelector("#begin-tester");
+const testerButton = document.querySelector("#tester");
 let questionText = document.querySelector("#question");
 let mixUpQuestions;
 let currentQuestionIndex;
@@ -74,7 +74,9 @@ const selectAnswer = (e) => {
         nextButton.classList.remove("hide");
     } else {
         nextButton.classList.add("hide");
-        goToTesterButton.classList.remove("hide");
+        testerButton.classList.remove("hide");
+        setTimeout(() => { questionContainer.classList.add("hide") }, 1000);
+        setTimeout(() => { answerButtons.classList.add("hide") }, 1000);
     }
     if (e.target.dataset.correct == "true") {
         questionText.innerText = "Correct Answer!"
