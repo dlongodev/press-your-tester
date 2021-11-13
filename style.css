@@ -139,12 +139,6 @@ img {
   
 }
 
-.lit-border {
-  border-color: hsla(49, 93%, 67%, 1);
-  box-shadow: 0 0px 20px 10px rgb(255, 231, 159);
-  animation: glow 1s ease-in-out infinite alternate;
-  background-color: hsla(20, 6%, 9%, 1);
-}
 
 .question {
   background-color: rgb(165, 34, 39);
@@ -290,6 +284,14 @@ animation: glow 2s ease-in-out infinite alternate;
 }
 .money-box {
   grid-column: 4 / span 2;
+}
+
+
+.lit-border {
+  border-color: hsla(49, 93%, 67%, 1);
+  box-shadow: 0 0px 20px 10px rgb(255, 231, 159);
+  animation: glow 1s ease-in-out infinite alternate;
+  background-color: hsla(20, 6%, 9%, 1);
 }
 
 .hide {

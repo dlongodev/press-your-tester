@@ -10,13 +10,15 @@ const messageBox = document.querySelector("#message");
 const chancesBox = document.querySelector(".chances-box");
 let chancesText = document.querySelector("#chances");
 const moneyBox = document.querySelector(".money-box");
-let totalMoney = document.querySelector("#total-money");
+let totalMoneyText = document.querySelector("#total-money");
 const gameBoxes = document.querySelectorAll(".box")
+const stopTesterButton = document.querySelector("#stop-tester")
 
 let mixUpQuestions;
 let currentQuestionIndex;
 let testerChances = 0;
 let questionCount = 0;
+let totalMoney = 0
 
 
 nextButton.addEventListener("click", () => {
@@ -191,21 +193,47 @@ startGame();
 // if total bugs = 4
     // game over screen with loosing message
 
+// My getters: gameBoxes is all boxes 
+//  testerButton is the button
+// totalMoneyText is the dom element
+// totalMoney is the count
+// stoTesterButton is stop button
 
-// const startTester = setInterval(lightUpBox, 500)
+let boxId, boxValue, boxType
+let intervalID = null
 
-// function lightUpBox() {
-//     gameBoxes.forEach(box => box.classList.add(""))
-// }
+function randomLightUpBox() {
+    gameBoxes.forEach(box => {
+        box.classList.remove("lit-border")
+    })
+    let randomBox = gameBoxes[Math.floor(Math.random() * 19)]
+    randomBox.classList.add("lit-border")
+    boxId = randomBox.id
+    boxValue = randomBox.dataset.value
+    boxType = randomBox.dataset.type
 
-// const stopTester = () => {
+}
 
-// }
+function startTester() {
+    testerButton.classList.add("hide")
+    stopTesterButton.classList.remove("hide")
+    intervalID = setInterval(randomLightUpBox, 2000)
 
-// const getValue = () => {
+}
 
-// }
+function stopTester() {
+    stopTesterButton.classList.add("hide")
+    testerButton.classList.remove("hide")
+    gameBoxes.forEach(box => {
+        if (box.id == boxId) {
+            console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
 
-// const displayMessage = () => {
+        }
+    })
+    clearInterval(intervalID)
+}
 
-// }
+testerButton.addEventListener("click", startTester)
+
+stopTesterButton.addEventListener("click", stopTester)
+
