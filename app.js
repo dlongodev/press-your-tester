@@ -165,6 +165,26 @@ startGame();
 
 // start Tester Game Here
 
+// every time user presses Tester
+    // subtract from chances
+    // randomly apply .lit-border class
+    // show STOP TESTER button
+        // grab the dataset.value of the box that stops (if box has class .lit-border)
+            // box with value, add the value to #total-money
+            // GO AGAIN, add 1 to chances
+            // BUG, set money to $0
+    // after each chance display message
+        // what happened on previous round (last dataset.value)
+        // add buttons for user to continue or stop
+            // if continue, close the message screen (or message to press tester)
+            // if stop, game over -> player wins
+// if chances = 0
+    // game over screen
+        // if total money not 0, display message of win
+// if total bugs = 4
+    // game over screen with loosing message
+
+
 const startTester = () => {
 
 };
