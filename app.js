@@ -194,10 +194,10 @@ startGame();
     // game over screen with loosing message
 
 // My getters: gameBoxes is all boxes 
-//  testerButton is the button
-// totalMoneyText is the dom element
-// totalMoney is the count
-// stoTesterButton is stop button
+    //  testerButton is the button
+    // totalMoneyText is the dom element
+    // totalMoney is the count
+    // stoTesterButton is stop button
 
 let boxId, boxValue, boxType
 let intervalID = null
@@ -209,25 +209,43 @@ function randomLightUpBox() {
     let randomBox = gameBoxes[Math.floor(Math.random() * 19)]
     randomBox.classList.add("lit-border")
     boxId = randomBox.id
-    boxValue = randomBox.dataset.value
-    boxType = randomBox.dataset.type
 
 }
 
 function startTester() {
+
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
-    intervalID = setInterval(randomLightUpBox, 2000)
+    intervalID = setInterval(randomLightUpBox, 1000)
 
 }
 
 function stopTester() {
+    testerChances--
+    chancesText.innerText = testerChances
     stopTesterButton.classList.add("hide")
     testerButton.classList.remove("hide")
     gameBoxes.forEach(box => {
         if (box.id == boxId) {
-            console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
-
+            boxValue = box.dataset.value
+            boxType = box.dataset.type
+            // console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
+            // console.log("testing variable:", boxType, boxValue)
+            if (boxType === "money") {
+                totalMoney += parseInt(boxValue)
+                totalMoneyText.innerText = totalMoney
+                // console.log("inside if statement", totalMoney)
+            }
+            else if (boxType === "bug") {
+                totalMoney = 0
+                totalMoneyText.innerText = totalMoney
+                // console.log("inside if statement", totalMoney)
+            }
+            else if (boxType === "chance") {
+                testerChances += 1
+                console.log("inside if statement", testerChances)
+                chancesText.innerText = testerChances
+            }
         }
     })
     clearInterval(intervalID)
