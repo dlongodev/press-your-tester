@@ -13,12 +13,14 @@ const moneyBox = document.querySelector(".money-box");
 let totalMoneyText = document.querySelector("#total-money");
 const gameBoxes = document.querySelectorAll(".box")
 const stopTesterButton = document.querySelector("#stop-tester")
+const bugCountDisplay = document.querySelector("#bug-count-display")
 
 let mixUpQuestions;
 let currentQuestionIndex;
 let testerChances = 0;
 let questionCount = 0;
 let totalMoney = 0
+let bugCount = 0
 
 
 nextButton.addEventListener("click", () => {
@@ -213,7 +215,8 @@ function randomLightUpBox() {
 }
 
 function startTester() {
-
+    testerChances--
+    chancesText.innerText = testerChances
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
     intervalID = setInterval(randomLightUpBox, 1000)
@@ -221,15 +224,13 @@ function startTester() {
 }
 
 function stopTester() {
-    testerChances--
-    chancesText.innerText = testerChances
     stopTesterButton.classList.add("hide")
     testerButton.classList.remove("hide")
     gameBoxes.forEach(box => {
         if (box.id == boxId) {
             boxValue = box.dataset.value
             boxType = box.dataset.type
-            // console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
+            console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
             // console.log("testing variable:", boxType, boxValue)
             if (boxType === "money") {
                 totalMoney += parseInt(boxValue)
@@ -237,19 +238,42 @@ function stopTester() {
                 // console.log("inside if statement", totalMoney)
             }
             else if (boxType === "bug") {
+                bugCount += 1
+                bugCountDisplay.innerText = bugCount
                 totalMoney = 0
                 totalMoneyText.innerText = totalMoney
-                // console.log("inside if statement", totalMoney)
+                console.log("inside if statement", totalMoney)
+                console.log("this is bug count:", bugCount)
             }
             else if (boxType === "chance") {
                 testerChances += 1
-                console.log("inside if statement", testerChances)
+                // console.log("inside if statement", testerChances)
                 chancesText.innerText = testerChances
             }
         }
     })
     clearInterval(intervalID)
 }
+
+
+
+
+// const addBugCount = () => {
+
+//     console.log(Array.from(bugCountDisplay))
+
+    // bugCountDisplay.forEach(bug => {
+    //     let bugSequence = bug.dataset.sequence
+    //     if (bugSequence == 1 && bugCount === 1) {
+    //         bug.classList.add("bug")
+    //     } else if (bugSequence == 2 && bugCount === 2) {
+    //         bug.classList.add("bug")
+    //     } else if (bugSequence == 3 && bugCount === 3) {
+    //         bug.classList.add("bug")
+    //     }
+
+    // })
+// } 
 
 testerButton.addEventListener("click", startTester)
 
