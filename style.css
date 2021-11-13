@@ -245,12 +245,14 @@ img {
 .controls {
   width: 48rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.5fr 1fr 2fr 2fr;
   margin-top: 2rem;
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .control-display {
@@ -264,6 +266,30 @@ img {
   font-size: 2rem;
   border: 10px solid rgb(234, 202, 64);
   animation: glow 2s ease-in-out infinite alternate;
+}
+
+.chances-count {
+  grid-column: span 1;
+}
+
+.bug-count {
+  width: 7rem;
+  height: 7rem;
+  grid-column: 2 / 1/5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: rgb(223, 161, 52);
+}
+.bug {
+color: hsla(358, 65%, 46%, 0.8);
+animation: glow 2s ease-in-out infinite alternate;
+}
+.money-box {
+  grid-column: 4 / span 2;
 }
 
 .hide {

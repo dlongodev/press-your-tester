@@ -106,6 +106,9 @@ const showGameBoxes = () => {
             box.classList.remove("hide")
         }
         box.innerText = box.dataset.text;
+        // if (box.dataset.text === "BUG") {
+        //     box.innerHTML = `<i class=" far fa-bug"></i>`
+        // }
     })
 }
 // setting styles for right or wrong
@@ -188,3 +191,15 @@ startGame();
 const startTester = () => {
 
 };
+
+const stopTester = () => {
+
+}
+
+const getValue = () => {
+
+}
+
+const displayMessage = () => {
+
+}
