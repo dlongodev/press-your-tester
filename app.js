@@ -11,6 +11,7 @@ const chancesBox = document.querySelector(".chances-box");
 let chancesText = document.querySelector("#chances");
 const moneyBox = document.querySelector(".money-box");
 let totalMoney = document.querySelector("#total-money");
+const gameBoxes = document.querySelectorAll(".box")
 
 let mixUpQuestions;
 let currentQuestionIndex;
@@ -79,6 +80,7 @@ const selectAnswer = (e) => {
     setStatusClass(document.querySelector(".answer-btn"), correct);
     Array.from(answerButtons.children).forEach((button) => {
         setStatusClass(button, button.dataset.correct);
+        button.removeEventListener("click", selectAnswer)
     });
     if (mixUpQuestions.length > currentQuestionIndex + 1 && questionCount < 3) {
         nextButton.classList.remove("hide");
@@ -90,6 +92,8 @@ const selectAnswer = (e) => {
         messageBox.classList.remove("hide");
         messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`;
         moneyBox.classList.remove("hide");
+
+
         showGameBoxes();
 
     }
@@ -100,7 +104,7 @@ const selectAnswer = (e) => {
 
 // remove hide class from game boxes
 const showGameBoxes = () => {
-    const gameBoxes = document.querySelectorAll(".box")
+    // const gameBoxes = document.querySelectorAll(".box")
     gameBoxes.forEach(box => {
         if (box.classList.contains("hide")) {
             box.classList.remove("hide")
@@ -188,18 +192,20 @@ startGame();
     // game over screen with loosing message
 
 
-const startTester = () => {
+// const startTester = setInterval(lightUpBox, 500)
 
-};
+// function lightUpBox() {
+//     gameBoxes.forEach(box => box.classList.add(""))
+// }
 
-const stopTester = () => {
+// const stopTester = () => {
 
-}
+// }
 
-const getValue = () => {
+// const getValue = () => {
 
-}
+// }
 
-const displayMessage = () => {
+// const displayMessage = () => {
 
-}
+// }
