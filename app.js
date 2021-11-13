@@ -97,22 +97,15 @@ const selectAnswer = (e) => {
 };
 
 // remove hide class from game boxes
-// console.log(document.querySelector(".game-container").childNodes)
-
 const showGameBoxes = () => {
     const gameBoxes = document.querySelectorAll(".box")
     gameBoxes.forEach(box => {
         if (box.classList.contains("hide")) {
             box.classList.remove("hide")
         }
+        box.innerText = box.dataset.text;
     })
-    // for (let i = 0; i < gameBoxes.length; i++) {
-    //     if (gameBoxes[i].classList.contains("hide")) {
-    //         gameBoxes[i].classList.remove("hide")
-    //     }
-    // }
 }
-
 // setting styles for right or wrong
 
 const setStatusClass = (element, correct) => {

@@ -130,7 +130,22 @@ img {
   background-color: rgb(121, 24, 27);
   border: 10px solid rgb(165, 34, 39);
   border-radius: 20px;
+  font-size: 1.4rem;
+  color: hsla(49, 93%, 67%, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Codystar', sans-serif;
+  
 }
+
+.lit-border {
+  border-color: hsla(49, 93%, 67%, 1);
+  box-shadow: 0 0px 20px 10px rgb(255, 231, 159);
+  animation: glow 1s ease-in-out infinite alternate;
+  background-color: hsla(20, 6%, 9%, 1);
+}
+
 .question {
   background-color: rgb(165, 34, 39);
   grid-column: 1 / span 6;
