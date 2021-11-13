@@ -42,6 +42,7 @@ const getNextQuestion = () => {
 
 const resetState = () => {
     nextButton.classList.add("hide");
+    //removes previous question buttons
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
@@ -73,12 +74,13 @@ const selectAnswer = (e) => {
     const correct = selectedButton.dataset.correct;
     const chancesAmount = selectedButton.dataset.chances;
     testerChances += parseInt(chancesAmount);
+    questionCount += 1
     chancesText.innerText = testerChances
     setStatusClass(document.querySelector(".answer-btn"), correct);
     Array.from(answerButtons.children).forEach((button) => {
         setStatusClass(button, button.dataset.correct);
     });
-    if (mixUpQuestions.length > currentQuestionIndex + 1) {
+    if (mixUpQuestions.length > currentQuestionIndex + 1 && questionCount < 3) {
         nextButton.classList.remove("hide");
     } else {
         nextButton.classList.add("hide");
