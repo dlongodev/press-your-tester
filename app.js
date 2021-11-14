@@ -205,13 +205,16 @@ let boxId, boxValue, boxType
 let intervalID = null
 
 function randomLightUpBox() {
-    gameBoxes.forEach(box => {
-        box.classList.remove("lit-border")
-    })
+    for (let i = 0; i < gameBoxes.length; i++) {
+        gameBoxes[i].classList.remove("lit-border")
+
+    }
+    // gameBoxes.forEach((box, index) => {
+    //     box.classList.remove("lit-border")
+    // })
     let randomBox = gameBoxes[Math.floor(Math.random() * 19)]
     randomBox.classList.add("lit-border")
     boxId = randomBox.id
-
 }
 
 function startTester() {
@@ -219,8 +222,8 @@ function startTester() {
     chancesText.innerText = testerChances
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
+    messageBox.innerText = "checking your code now... you can stop any time!"
     intervalID = setInterval(randomLightUpBox, 1000)
-
 }
 
 function stopTester() {
@@ -230,11 +233,12 @@ function stopTester() {
         if (box.id == boxId) {
             boxValue = box.dataset.value
             boxType = box.dataset.type
-            console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
+            // console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
             // console.log("testing variable:", boxType, boxValue)
             if (boxType === "money") {
                 totalMoney += parseInt(boxValue)
                 totalMoneyText.innerText = totalMoney
+                messageBox.innerText = `your code looks good! you got paid $${boxValue} this round`
                 // console.log("inside if statement", totalMoney)
             }
             else if (boxType === "bug") {
@@ -242,6 +246,7 @@ function stopTester() {
                 bugCountDisplay.innerText = bugCount
                 totalMoney = 0
                 totalMoneyText.innerText = totalMoney
+                messageBox.innerText = `yikes... tester found a bug. 3 bugs and you loose. Right now you have ${bugCount}`
                 console.log("inside if statement", totalMoney)
                 console.log("this is bug count:", bugCount)
             }
@@ -249,31 +254,17 @@ function stopTester() {
                 testerChances += 1
                 // console.log("inside if statement", testerChances)
                 chancesText.innerText = testerChances
+                messageBox.innerText = `you got another chance to press the tester... now you have ${testerChances}`
             }
         }
     })
     clearInterval(intervalID)
 }
 
+const gameOver = () => {
 
+}
 
-
-// const addBugCount = () => {
-
-//     console.log(Array.from(bugCountDisplay))
-
-    // bugCountDisplay.forEach(bug => {
-    //     let bugSequence = bug.dataset.sequence
-    //     if (bugSequence == 1 && bugCount === 1) {
-    //         bug.classList.add("bug")
-    //     } else if (bugSequence == 2 && bugCount === 2) {
-    //         bug.classList.add("bug")
-    //     } else if (bugSequence == 3 && bugCount === 3) {
-    //         bug.classList.add("bug")
-    //     }
-
-    // })
-// } 
 
 testerButton.addEventListener("click", startTester)
 

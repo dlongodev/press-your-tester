@@ -290,7 +290,7 @@ animation: glow 2s ease-in-out infinite alternate;
 .lit-border {
   border-color: hsla(49, 93%, 67%, 1);
   box-shadow: 0 0px 20px 10px rgb(255, 231, 159);
-  animation: glow 1s ease-in-out infinite alternate;
+  /* animation: glow 1s ease-in-out infinite alternate; */
   background-color: hsla(20, 6%, 9%, 1);
 }
 
