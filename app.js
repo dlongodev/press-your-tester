@@ -185,14 +185,11 @@ startGame();
             // BUG, set money to $0
     // after each chance display message
         // what happened on previous round (last dataset.value)
-        // add buttons for user to continue or stop
-            // if continue, close the message screen (or message to press tester)
-            // if stop, game over -> player wins
-// if chances = 0
-    // game over screen
-        // if total money not 0, display message of win
-// if total bugs = 4
-    // game over screen with loosing message
+    // if chances = 0
+        // game over screen
+            // if total money not 0, display message of win
+    // if total bugs = 3
+        // game over screen with loosing message
 
 // My getters: gameBoxes is all boxes 
     //  testerButton is the button
@@ -221,8 +218,8 @@ function startTester() {
     chancesText.innerText = testerChances
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
-    messageBox.innerText = "checking your code now... you can stop any time!"
-    intervalID = setInterval(randomLightUpBox, 900)
+    messageBox.innerHTML = `<iframe src="https://giphy.com/embed/C4NdKtRaQE9m8" width="100%" height="100%" frameBorder="0" allowFullScreen></iframe>`
+    intervalID = setInterval(randomLightUpBox, 300)
 }
 
 function stopTester() {
@@ -230,7 +227,6 @@ function stopTester() {
     testerButton.classList.remove("hide")
     gameBoxes.forEach(box => {
         if (box.id == boxId) {
-
             boxValue = box.dataset.value
             boxType = box.dataset.type
             console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
@@ -272,7 +268,6 @@ function gameOver() {
         restartButton.classList.remove("hide")
     }
 }
-
 
 testerButton.addEventListener("click", startTester)
 
