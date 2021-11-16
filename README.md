@@ -2,7 +2,7 @@
 *Based on the 1980's TV Show "Press Your Luck"*
 
 ## Project Description 
-You are a Software Engineer looking to get paid **BIG BUCKS for** the code you wrote. But before you get paid, you have to **PRESS YOUR TESTER!** First, you answer 3 multiple choice questions to prove your worth, each correct answer gives you 3 chances with the TESTER, a wrong answer will only get you 1 chance for each. This tester can find some **NASTY BUGS!** The goal is to make the most money you can without *"bugging out"* -- 4 BUGS in your code and you lose! You have a chance to deliver your code by choosing to STOP CODING button anytime and getting paid what you got so far. GOOD LUCK!
+You are a Software Engineer looking to get paid **BIG BUCKS for** the code you wrote. But before you get paid, you have to **PRESS YOUR TESTER!** First, you answer 3 multiple choice questions to prove your worth, each correct answer gives you 3 chances with the TESTER, a wrong answer will only get you 1 chance for each. This tester can find some **NASTY BUGS!** The goal is to make the most money you can without *"bugging out"* -- 3 BUGS in your code and you lose! GOOD LUCK!
 
 ## Wire Frames
 ![Unit1-ProjectProposal-wireframes](https://media.git.generalassemb.ly/user/38668/files/45cac500-40ce-11ec-9dc3-a3fc47679676)
