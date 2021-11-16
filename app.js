@@ -203,7 +203,7 @@ startGame();
 let boxId, boxValue, boxType
 let intervalID = null
 
-const randomLightUpBox = () => {
+function randomLightUpBox() {
     for (let i = 0; i < gameBoxes.length; i++) {
         gameBoxes[i].classList.remove("lit-border")
 
@@ -216,20 +216,21 @@ const randomLightUpBox = () => {
     boxId = randomBox.id
 }
 
-const startTester = () => {
+function startTester() {
     testerChances--
     chancesText.innerText = testerChances
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
     messageBox.innerText = "checking your code now... you can stop any time!"
-    intervalID = setInterval(randomLightUpBox, 200)
+    intervalID = setInterval(randomLightUpBox, 900)
 }
 
-const stopTester = () => {
+function stopTester() {
     stopTesterButton.classList.add("hide")
     testerButton.classList.remove("hide")
     gameBoxes.forEach(box => {
         if (box.id == boxId) {
+
             boxValue = box.dataset.value
             boxType = box.dataset.type
             console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
@@ -257,14 +258,16 @@ const stopTester = () => {
     gameOver()
 }
 
-const gameOver = () => {
+function gameOver() {
     if (bugCount === 3) {
         messageBox.innerText = "You got 3 bugs, you better keep coding, you lost this round!"
         testerButton.classList.add("hide")
         restartButton.classList.remove("hide")
 
-    } else if (testerChances === 0 && totalMoney > 0) {
-        messageBox.innerText = `you're out of chances, but good job on your code! You collected $${totalMoney}`
+    } else if (testerChances === 0) {
+        if (totalMoney === 0) {
+            messageBox.innerText = `You're out of chances and unfortunately you lost all your Money. keep coding my friend!`
+        } else { messageBox.innerText = `you're out of chances, but good job on your code! You collected $${totalMoney}` }
         testerButton.classList.add("hide")
         restartButton.classList.remove("hide")
     }
