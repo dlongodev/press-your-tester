@@ -1,6 +1,6 @@
 console.log('%c PRESS YOUR TESTER', 'font-weight: bold; font-size: 20px;color: red; text-shadow: 1px 1px 0 rgb(217,31,38) , 3px 3px 0 rgb(226,91,14) , 5px 5px 0 rgb(245,221,8)');
 
-// Multiple Choice Question Round
+
 const questionContainer = document.querySelector("#question-container");
 const answerButtons = document.querySelector("#answer-buttons");
 const nextButton = document.querySelector("#next-btn");
@@ -14,6 +14,7 @@ let totalMoneyText = document.querySelector("#total-money");
 const gameBoxes = document.querySelectorAll(".box")
 const stopTesterButton = document.querySelector("#stop-tester")
 const bugCountDisplay = document.querySelector("#bug-count-display")
+const restartButton = document.querySelector("#restart")
 
 let mixUpQuestions;
 let currentQuestionIndex;
@@ -22,6 +23,7 @@ let questionCount = 0;
 let totalMoney = 0
 let bugCount = 0
 
+// Multiple Choice Question Round
 
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++;
@@ -96,10 +98,7 @@ const selectAnswer = (e) => {
         messageBox.classList.remove("hide");
         messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`;
         moneyBox.classList.remove("hide");
-
-
         showGameBoxes();
-
     }
     if (e.target.dataset.correct == "true") {
         questionText.innerText = "Correct Answer!";
@@ -204,7 +203,7 @@ startGame();
 let boxId, boxValue, boxType
 let intervalID = null
 
-function randomLightUpBox() {
+const randomLightUpBox = () => {
     for (let i = 0; i < gameBoxes.length; i++) {
         gameBoxes[i].classList.remove("lit-border")
 
@@ -213,60 +212,65 @@ function randomLightUpBox() {
     //     box.classList.remove("lit-border")
     // })
     let randomBox = gameBoxes[Math.floor(Math.random() * 19)]
-    randomBox.classList.add("lit-border")
+    randomBox == undefined ? console.log("DOM issue") : randomBox.classList.add("lit-border")
     boxId = randomBox.id
 }
 
-function startTester() {
+const startTester = () => {
     testerChances--
     chancesText.innerText = testerChances
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
     messageBox.innerText = "checking your code now... you can stop any time!"
-    intervalID = setInterval(randomLightUpBox, 1000)
+    intervalID = setInterval(randomLightUpBox, 200)
 }
 
-function stopTester() {
+const stopTester = () => {
     stopTesterButton.classList.add("hide")
     testerButton.classList.remove("hide")
     gameBoxes.forEach(box => {
         if (box.id == boxId) {
             boxValue = box.dataset.value
             boxType = box.dataset.type
-            // console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
-            // console.log("testing variable:", boxType, boxValue)
+            console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
             if (boxType === "money") {
                 totalMoney += parseInt(boxValue)
                 totalMoneyText.innerText = totalMoney
                 messageBox.innerText = `your code looks good! you got paid $${boxValue} this round`
-                // console.log("inside if statement", totalMoney)
             }
             else if (boxType === "bug") {
                 bugCount += 1
                 bugCountDisplay.innerText = bugCount
                 totalMoney = 0
                 totalMoneyText.innerText = totalMoney
-                messageBox.innerText = `yikes... tester found a bug. 3 bugs and you loose. Right now you have ${bugCount}`
-                console.log("inside if statement", totalMoney)
-                console.log("this is bug count:", bugCount)
+                messageBox.innerText = `yikes... tester found a bug. 3 bugs and you lose. Right now you have ${bugCount}`
             }
             else if (boxType === "chance") {
                 testerChances += 1
-                // console.log("inside if statement", testerChances)
                 chancesText.innerText = testerChances
                 messageBox.innerText = `you got another chance to press the tester... now you have ${testerChances}`
+
             }
         }
     })
     clearInterval(intervalID)
+    gameOver()
 }
 
 const gameOver = () => {
+    if (bugCount === 3) {
+        messageBox.innerText = "You got 3 bugs, you better keep coding, you lost this round!"
+        testerButton.classList.add("hide")
+        restartButton.classList.remove("hide")
 
+    } else if (testerChances === 0 && totalMoney > 0) {
+        messageBox.innerText = `you're out of chances, but good job on your code! You collected $${totalMoney}`
+        testerButton.classList.add("hide")
+        restartButton.classList.remove("hide")
+    }
 }
 
 
 testerButton.addEventListener("click", startTester)
 
 stopTesterButton.addEventListener("click", stopTester)
-
