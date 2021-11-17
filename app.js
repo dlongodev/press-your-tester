@@ -97,7 +97,6 @@ const selectAnswer = (e) => {
         answerButtons.classList.add("hide");
         messageBox.classList.remove("hide");
         messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`;
-        moneyBox.classList.remove("hide");
         showGameBoxes();
     }
     if (e.target.dataset.correct == "true") {
@@ -208,8 +207,8 @@ function randomLightUpBox() {
     // gameBoxes.forEach((box, index) => {
     //     box.classList.remove("lit-border")
     // })
-    let randomBox = gameBoxes[Math.floor(Math.random() * 19)]
-    randomBox == undefined ? console.log("DOM issue") : randomBox.classList.add("lit-border")
+    let randomBox = gameBoxes[Math.floor(Math.random() * 18)]
+    randomBox.classList.add("lit-border")
     boxId = randomBox.id
 }
 
@@ -218,7 +217,7 @@ function startTester() {
     chancesText.innerText = testerChances
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
-    messageBox.innerHTML = `<iframe src="https://giphy.com/embed/C4NdKtRaQE9m8" width="100%" height="100%" frameBorder="0" allowFullScreen></iframe>`
+    messageBox.innerHTML = `testing code... <img src="imgs/coding1.gif" alt="coding">`
     intervalID = setInterval(randomLightUpBox, 300)
 }
 
@@ -240,7 +239,7 @@ function stopTester() {
                 bugCountDisplay.innerText = bugCount
                 totalMoney = 0
                 totalMoneyText.innerText = totalMoney
-                messageBox.innerText = `yikes... tester found a bug. 3 bugs and you lose. Right now you have ${bugCount}`
+                messageBox.innerHTML = `tester found a <i class="fas fa-bug bug"></i>3 bugs and you lose. Right now you have ${bugCount}`
             }
             else if (boxType === "chance") {
                 testerChances += 1

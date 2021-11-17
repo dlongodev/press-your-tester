@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Poppins:wght@300;700&display=swap');
+@import url("https://use.typekit.net/jlj3seh.css");
 /* CSS HEX */
 :root {
   --eerie-black: #191716ff;
@@ -24,6 +25,8 @@ body {
   background-color: hsla(49, 93%, 67%, 1);
   color: hsla(20, 6%, 9%, 1);
   height: 100%;
+  background: url("imgs/game-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 button:active,
@@ -34,7 +37,7 @@ button:hover {
 
 /* container loading animation */
 .container {
-  min-width: 50rem;
+  max-width: 50em;
   min-height: 100%;
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -42,7 +45,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
-  
+  background-image: ;
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
   -webkit-animation: fadein 2s; /* Safari and Chrome */
@@ -51,6 +54,13 @@ button:hover {
 
 .container > div {
   flex: 1;
+}
+.container nav img {
+  max-width: 20%;
+}
+.container nav {
+  margin-bottom: 1rem;
+
 }
 
 @keyframes fadein {
@@ -77,11 +87,7 @@ button:hover {
 }
 
 .logo {
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* width: 80%; */
   padding: 60px 0;
-  /* text-align: center; */
 }
 .opacity {
   opacity: 20%;
@@ -117,7 +123,7 @@ img {
   transform: translateY(0.3rem);
 }
 .game-container {
-  width: 48rem;
+  min-width: 48rem;
   /* height: 40rem; */
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -125,19 +131,27 @@ img {
   gap: 1rem;
   background-color: #d62828ff;
   padding: 1.5rem;
-  border-radius: 1.5rem;
+  border-radius: 2.5rem;
+  border: solid;
+  border-width: 20px 20px 20px 20px;
+  -moz-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
+  -webkit-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
+  -o-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
+  border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
+
 }
 .box {
   background-color: rgb(121, 24, 27);
   border: 0.8rem solid rgb(165, 34, 39);
   border-radius: 1.3rem;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: hsla(49, 93%, 67%, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Codystar', sans-serif;
-  
+font-family: 'bitcount-prop-double-circle', sans-serif;
+font-weight: 300;
+font-style: normal;
 }
 
 
@@ -146,7 +160,7 @@ img {
   grid-column: 1 / span 6;
   grid-row: 1 / span 1;
   border-radius: 1.5rem;
-  box-shadow: inset 0 0.6rem 0 rgb(121, 24, 27);
+  box-shadow: inset 0 0.3rem 0 rgb(121, 24, 27);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,6 +179,13 @@ img {
   align-items: center;
   justify-content: center;
   /* font-size: 2rem; */
+    /* border-radius: 2.5rem; */
+  border: solid;
+  border-width: 20px 20px 20px 20px;
+  -moz-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
+  -webkit-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
+  -o-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
+  border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
 }
 /* .center-box::after {
   content: "";
@@ -210,6 +231,7 @@ img {
 
 .message-box {
   display: flex;
+  flex-direction: column;
   flex-basis: 100%;
   align-items: center;
   justify-content: center;
@@ -217,10 +239,18 @@ img {
   color: #fff;
   padding: 1.5rem;
   border-radius: 1.2rem;
-  margin: 1.5rem;
-  font-family: 'Codystar', sans-serif;
+font-family: bitcount-prop-double-circle, sans-serif;
+font-weight: 300;
+font-style: normal;
+  text-transform: uppercase;
   font-size: 2rem;
 }
+.message-box img {
+  min-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
 .home-btn {
   background-color: white;
   box-shadow: 0px 8px rgb(206, 206, 206);
@@ -246,16 +276,19 @@ img {
 /* bottom controls */
 
 .controls {
-  width: 48rem;
+  max-width: 48rem;
   display: grid;
   grid-template-columns: 1.5fr 1fr 2fr 2fr;
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
   align-items: center;
   justify-content: center;
+  background-color: rgb(255, 239, 117);
+  padding: 1rem;
+  border-radius: 1rem;
+  border: solid hsla(358, 65%, 46%, 1) 0.5rem;
 }
 
 .control-display {
@@ -265,7 +298,10 @@ img {
   padding: 1rem;
   border-radius: 1.5rem;
   margin: 0.5rem 1rem;
-  font-family: 'Codystar', sans-serif;
+  font-family: bitcount-prop-double-circle, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  text-transform: uppercase;
   font-size: 2rem;
   border: 0.8rem solid rgb(234, 202, 64);
   animation: glow 2s ease-in-out infinite alternate;
@@ -280,8 +316,8 @@ img {
   /* height: 7rem; */
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  font-size: 2.5rem;
+  justify-content: flex-start;
+  font-size: 2rem;
   color: rgb(223, 161, 52);
 }
 
@@ -302,19 +338,20 @@ img {
   display: none;
 }
 
-@media only screen and (max-width: 710px) {
+@media only screen and (max-width: 755px) {
   html {
-    font-size: 12px
+    font-size: 11px
   }
   .container{
-    max-width: 100%;
+    width: 100%;
   }
   .game-container {
-  width: 85%;
+  /* min-width: 85%; */
   /* flex-grow: 1; */
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
+  border-style: solid;
   }
   .game-container > div {
     flex: 1;
@@ -330,25 +367,26 @@ img {
   flex: 1;
 }
 .controls {
-  width: 100%;
+  width: 90%;
   /* height: 18rem; */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 8rem 10rem;
 }
 .chances-count {
-  grid-row: 2 / span 1;
+  grid-row: 1 / span 1;
   grid-column: 1 / span 1;
 }
 .bug-count {
-  grid-row: 2 / span 1;
+  grid-row: 1 / span 1;
   grid-column: 2 / span 1;
+  justify-content: space-evenly;
 }
 .money-box {
-  grid-row: 2 / span 1;
+  grid-row: 1 / span 1;
   grid-column: 3 / span 1;
 }
 .middle-buttons {
-  grid-row: 1 / span 1;
+  grid-row: 2 / span 1;
   grid-column: 1 / span 3;
 }
 
@@ -367,7 +405,7 @@ img {
 
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 560px) {
   html {
     font-size: 10px
   }
