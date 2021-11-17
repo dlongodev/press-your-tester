@@ -55,13 +55,6 @@ button:hover {
 .container > div {
   flex: 1;
 }
-.container nav img {
-  max-width: 20%;
-}
-.container nav {
-  margin-bottom: 1rem;
-
-}
 
 @keyframes fadein {
   from { opacity: 0;}
@@ -123,7 +116,7 @@ img {
   transform: translateY(0.3rem);
 }
 .game-container {
-  min-width: 48rem;
+  min-width: 45rem;
   /* height: 40rem; */
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -142,16 +135,16 @@ img {
 }
 .box {
   background-color: rgb(121, 24, 27);
-  border: 0.8rem solid rgb(165, 34, 39);
+  border: 0.4rem solid rgb(165, 34, 39);
   border-radius: 1.3rem;
   font-size: 1.5rem;
   color: hsla(49, 93%, 67%, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-font-family: 'bitcount-prop-double-circle', sans-serif;
-font-weight: 300;
-font-style: normal;
+  font-family: 'bitcount-prop-double-circle', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 
@@ -172,20 +165,13 @@ font-style: normal;
   grid-column: 2 / span 4;
   grid-row: 2 / span 3;
   background-color: hsla(49, 93%, 67%, 1);
-  border-radius: 1.5rem;
+  border: 0.4rem solid rgb(165, 34, 39);
+  border-radius: 1.3rem;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* font-size: 2rem; */
-    /* border-radius: 2.5rem; */
-  border: solid;
-  border-width: 20px 20px 20px 20px;
-  -moz-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
-  -webkit-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
-  -o-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
-  border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
 }
 /* .center-box::after {
   content: "";
@@ -237,17 +223,18 @@ font-style: normal;
   justify-content: center;
   background-color: hsla(20, 6%, 9%, 1);
   color: #fff;
-  padding: 1.5rem;
-  border-radius: 1.2rem;
+  padding: 1.3rem;
+  border-radius: 0.9rem;
 font-family: bitcount-prop-double-circle, sans-serif;
 font-weight: 300;
 font-style: normal;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  margin: 0.4rem
 }
 .message-box img {
-  min-height: 100%;
-  max-width: 100%;
+  min-height: 90%;
+  /* max-width: 100%; */
   object-fit: cover;
 }
 
@@ -346,8 +333,8 @@ font-style: normal;
     width: 100%;
   }
   .game-container {
-  /* min-width: 85%; */
-  /* flex-grow: 1; */
+  min-width: 40rem;
+  flex-grow: 1;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
@@ -367,7 +354,7 @@ font-style: normal;
   flex: 1;
 }
 .controls {
-  width: 90%;
+  min-width: 100%;
   /* height: 18rem; */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 8rem 10rem;
