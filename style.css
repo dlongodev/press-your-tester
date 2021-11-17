@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Poppins:wght@300;700&display=swap');
 @import url("https://use.typekit.net/jlj3seh.css");
 /* CSS HEX */
 :root {
@@ -21,7 +20,9 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'dico-code-two', monospace;
+  font-weight: 700;
+  font-style: normal; 
   background-color: hsla(49, 93%, 67%, 1);
   color: hsla(20, 6%, 9%, 1);
   height: 100%;
@@ -39,13 +40,11 @@ button:hover {
 .container {
   max-width: 50em;
   min-height: 100%;
-  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: ;
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
   -webkit-animation: fadein 2s; /* Safari and Chrome */
@@ -94,7 +93,6 @@ img {
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
-  font-weight: 700;
   color: #fff;
   background-color: hsla(0, 69%, 50%, 1);
   box-shadow: 0rem 0.5rem rgb(165, 34, 39);
@@ -107,6 +105,7 @@ img {
   border-radius: 2rem;
   border: none;
   /* margin: 0.5rem; */
+  font-weight: 700;
 }
 
 .play-btn:active {
@@ -117,7 +116,7 @@ img {
 }
 .game-container {
   min-width: 45rem;
-  /* height: 40rem; */
+  min-height: 40rem;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(5, 6.5rem);
@@ -125,17 +124,17 @@ img {
   background-color: #d62828ff;
   padding: 1.5rem;
   border-radius: 2.5rem;
-  border: solid;
-  border-width: 20px 20px 20px 20px;
+  border: 0.8rem solid rgb(165, 34, 39);
+  /* border-width: 20px 20px 20px 20px;
   -moz-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
   -webkit-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
   -o-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
-  border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
+  border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch; */
 
 }
 .box {
   background-color: rgb(121, 24, 27);
-  border: 0.4rem solid rgb(165, 34, 39);
+  border: 0.5rem solid rgb(165, 34, 39);
   border-radius: 1.3rem;
   font-size: 1.5rem;
   color: hsla(49, 93%, 67%, 1);
@@ -158,14 +157,14 @@ img {
   align-items: center;
   justify-content: center;
   color: rgb(247, 229, 151);
-  font-weight: 700;
   font-size: 1.5rem;
+  padding: 0.3rem;
 }
 .center-box {
   grid-column: 2 / span 4;
   grid-row: 2 / span 3;
   background-color: hsla(49, 93%, 67%, 1);
-  border: 0.4rem solid rgb(165, 34, 39);
+  border: 0.5rem solid rgb(165, 34, 39);
   border-radius: 1.3rem;
   position: relative;
   display: flex;
@@ -191,14 +190,14 @@ img {
   width: 100%;
 }
 .answer-btn {
-  margin: 1rem;
-  font-size: 1.3rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0.8rem;
   border: solid 0.125rem #fff;
   background-color: rgba(244, 235, 235, 0.8);
-  font-weight: 700;
   border-radius: 0.8rem;
   cursor: pointer;
+  font-weight: 700;
 }
 .answer-btn:hover {
   border-color: hsla(20, 6%, 9%, 1);
@@ -268,7 +267,6 @@ font-style: normal;
   grid-template-columns: 1.5fr 1fr 2fr 2fr;
   margin-top: 1rem;
   font-size: 1.1rem;
-  font-weight: 700;
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
@@ -333,6 +331,7 @@ font-style: normal;
     width: 100%;
   }
   .game-container {
+    margin-top: 3rem;
   min-width: 40rem;
   flex-grow: 1;
   display: grid;
@@ -347,9 +346,9 @@ font-style: normal;
   grid-column: 2 / span 3;
   grid-row: 2 / span 4;
 }
-.box {
+/* .box {
   height: 6.5rem;
-}
+} */
 .question div{
   flex: 1;
 }
@@ -358,6 +357,7 @@ font-style: normal;
   /* height: 18rem; */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 8rem 10rem;
+  margin-bottom: 3rem;
 }
 .chances-count {
   grid-row: 1 / span 1;

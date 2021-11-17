@@ -47,9 +47,10 @@ const getNextQuestion = () => {
     displayQuestion(mixUpQuestions[currentQuestionIndex]);
 };
 
+//removes previous question buttons and hides the next button
 const resetState = () => {
     nextButton.classList.add("hide");
-    //removes previous question buttons
+
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
@@ -57,7 +58,6 @@ const resetState = () => {
 };
 
 // display the question and set if correct answer
-
 const displayQuestion = (question) => {
     questionText.innerText = question.question;
     question.answers.forEach((answer) => {
@@ -106,17 +106,14 @@ const selectAnswer = (e) => {
 
 // remove hide class from game boxes
 const showGameBoxes = () => {
-    // const gameBoxes = document.querySelectorAll(".box")
     gameBoxes.forEach(box => {
         if (box.classList.contains("hide")) {
             box.classList.remove("hide")
         }
         box.innerText = box.dataset.text;
-        // if (box.dataset.text === "BUG") {
-        //     box.innerHTML = `<i class=" far fa-bug"></i>`
-        // }
     })
 }
+
 // setting styles for right or wrong
 
 const setStatusClass = (element, correct) => {
@@ -137,67 +134,134 @@ const clearStatusClass = (element) => {
 // set questions in array of objects
 const questions = [
     {
-        question: "What is 2 + 2?",
+        question: "Which one you will see if you console.log(2+“2”) and console.log(2–“2”)",
         answers: [
-            { text: "4", correct: true, chances: 3 },
-            { text: "6", correct: false, chances: 1 },
-            { text: "20", correct: false, chances: 1 },
+            { text: "22 and 0", correct: true, chances: 3 },
+            { text: "4 and 0", correct: false, chances: 1 },
+            { text: "22 and NaN", correct: false, chances: 1 },
         ],
     },
     {
-        question: "What is 4 + 4?",
+        question: "Which one you will see if you Console.log(5<6<7) and console.log(7>6>5)",
         answers: [
-            { text: "16", correct: false, chances: 1 },
-            { text: "8", correct: true, chances: 3 },
-            { text: "44", correct: false, chances: 1 },
+            { text: "true and true", correct: false, chances: 1 },
+            { text: "true and false", correct: true, chances: 3 },
+            { text: "false and false", correct: false, chances: 1 },
         ],
     },
     {
-        question: "What is 5 + 5?",
+        question: "Which one you will see if you console.log(Math.max())",
         answers: [
-            { text: "25", correct: false, chances: 1 },
-            { text: "10", correct: true, chances: 3 },
-            { text: "55", correct: false, chances: 1 },
+            { text: "NaN", correct: false, chances: 1 },
+            { text: "undefined", correct: false, chances: 1 },
+            { text: "-infinity", correct: true, chances: 3 },
         ],
     },
     {
-        question: "What is 6 + 6?",
+        question: "If you apply margin to an inline element which sides will it apply to?",
         answers: [
-            { text: "36", correct: false, chances: 1 },
-            { text: "12", correct: true, chances: 3 },
-            { text: "66", correct: false, chances: 1 },
+            { text: "only left and right", correct: true, chances: 3 },
+            { text: "all sides", correct: false, chances: 1 },
+            { text: "only top and bottom", correct: false, chances: 1 },
+        ],
+    },
+    {
+        question: "Which of these is true about {visibility:hidden} in CSS?",
+        answers: [
+            { text: "It is removed from layout flow", correct: false, chances: 1 },
+            { text: "It occupies space", correct: true, chances: 3 },
+            { text: "It is the same as {opacity:0}", correct: false, chances: 1 },
+        ],
+    },
+    {
+        question: "Which of these is true about the method splice?",
+        answers: [
+            { text: "Doesn’t modify the original array (immutable)", correct: false, chances: 1 },
+            { text: "Used to pick elements from array", correct: false, chances: 1 },
+            { text: "Used to insert or delete elements to/from array", correct: true, chances: 3 },
+        ],
+    },
+    {
+        question: "Which of these is false about null?",
+        answers: [
+            { text: "Converted to zero while performing primitive operations", correct: false, chances: 1 },
+            { text: "Indicates the absence of a value for a variable", correct: false, chances: 1 },
+            { text: "Indicates absence of variable itself", correct: true, chances: 3 },
+        ],
+    },
+    {
+        question: "HTML tags are used to describe document... ",
+        answers: [
+            { text: "Content", correct: true, chances: 3 },
+            { text: "Definition", correct: false, chances: 1 },
+            { text: "Language", correct: false, chances: 1 },
+        ],
+    },
+    {
+        question: "HTML document contain one root tag called... ",
+        answers: [
+            { text: "head", correct: false, chances: 1 },
+            { text: "body", correct: false, chances: 1 },
+            { text: "html", correct: true, chances: 3 },
+        ],
+    },
+    {
+        question: "If you want to use a dotted border around an image, which of css property are you going to use?",
+        answers: [
+            { text: "border-line", correct: false, chances: 1 },
+            { text: "border-style", correct: true, chances: 3 },
+            { text: "border-decoration", correct: false, chances: 1 },
+        ],
+    },
+    {
+        question: "If you want to wrap a block of text around an image, which css property will you use?",
+        answers: [
+            { text: "float", correct: true, chances: 3 },
+            { text: "align", correct: false, chances: 1 },
+            { text: "wrap", correct: false, chances: 1 },
+        ],
+    },
+    {
+        question: "The default value of “position” attribute is…",
+        answers: [
+            { text: "fixed", correct: false, chances: 1 },
+            { text: "absolute", correct: false, chances: 1 },
+            { text: "relative", correct: true, chances: 3 },
+        ],
+    },
+    {
+        question: "The 'function' and 'var' are known as:",
+        answers: [
+            { text: "keywords", correct: false, chances: 1 },
+            { text: "declaration statements", correct: true, chances: 3 },
+            { text: "data types", correct: false, chances: 1 },
+        ],
+    },
+    {
+        question: "Which method is used to add an element at the starting of an array",
+        answers: [
+            { text: "shift()", correct: false, chances: 1 },
+            { text: "push()", correct: false, chances: 1 },
+            { text: "unshift()", correct: true, chances: 3 },
+        ],
+    },
+    {
+        question: "In JavaScript the x===y statement implies that:",
+        answers: [
+            { text: "Both are equal in the value and data type.", correct: true, chances: 3 },
+            { text: "Both x and y are equal in value, type and reference address as well.", correct: false, chances: 1 },
+            { text: "Both are x and y are equal in value only.", correct: false, chances: 1 },
         ],
     },
 ];
 
 startGame();
 
-// start Tester Game Here
-
-// every time user presses Tester
-    // subtract from chances
-    // randomly apply .lit-border class
-    // show STOP TESTER button
-        // grab the dataset.value of the box that stops (if box has class .lit-border)
-            // box with value, add the value to #total-money
-            // GO AGAIN, add 1 to chances
-            // BUG, set money to $0
-    // after each chance display message
-        // what happened on previous round (last dataset.value)
-    // if chances = 0
-        // game over screen
-            // if total money not 0, display message of win
-    // if total bugs = 3
-        // game over screen with loosing message
-
-// My getters: gameBoxes is all boxes 
-    //  testerButton is the button
-    // totalMoneyText is the dom element
-    // totalMoney is the count
-    // stoTesterButton is stop button
-
+// start Tester Game phase Here
 let boxId, boxValue, boxType
 let intervalID = null
+
+// apply the lit-border class to each box in a random index
 
 function randomLightUpBox() {
     for (let i = 0; i < gameBoxes.length; i++) {
@@ -212,6 +276,7 @@ function randomLightUpBox() {
     boxId = randomBox.id
 }
 
+// function for tester button to continuoulsy apply lit-border class to a box at a 300ms rate 
 function startTester() {
     testerChances--
     chancesText.innerText = testerChances
@@ -221,6 +286,7 @@ function startTester() {
     intervalID = setInterval(randomLightUpBox, 300)
 }
 
+// function to stop the tester from running and to apply conditions
 function stopTester() {
     stopTesterButton.classList.add("hide")
     testerButton.classList.remove("hide")
@@ -253,6 +319,7 @@ function stopTester() {
     gameOver()
 }
 
+// gameOver function to display winning or loosing messages and restart the game
 function gameOver() {
     if (bugCount === 3) {
         messageBox.innerText = "You got 3 bugs, you better keep coding, you lost this round!"
