@@ -1,25 +1,26 @@
-console.log('%c PRESS YOUR TESTER', 'font-weight: bold; font-size: 20px;color: red; text-shadow: 1px 1px 0 rgb(217,31,38) , 3px 3px 0 rgb(226,91,14) , 5px 5px 0 rgb(245,221,8)');
+console.log('%c PRESS YOUR TESTER', 'font-weight: bold; font-size: 20px;color: red; text-shadow: 1px 1px 0 rgb(217,31,38) , 3px 3px 0 rgb(226,91,14) , 5px 5px 0 rgb(245,221,8)')
 
 
-const questionContainer = document.querySelector("#question-container");
-const answerButtons = document.querySelector("#answer-buttons");
-const nextButton = document.querySelector("#next-btn");
-const testerButton = document.querySelector("#tester");
-let questionText = document.querySelector("#question");
-const messageBox = document.querySelector("#message");
-const chancesBox = document.querySelector(".chances-box");
-let chancesText = document.querySelector("#chances");
-const moneyBox = document.querySelector(".money-box");
-let totalMoneyText = document.querySelector("#total-money");
+const questionContainer = document.querySelector("#question-container")
+const answerButtons = document.querySelector("#answer-buttons")
+const nextButton = document.querySelector("#next-btn")
+const testerButton = document.querySelector("#tester")
+let questionText = document.querySelector("#question")
+const messageBox = document.querySelector("#message")
+const chancesBox = document.querySelector(".chances-box")
+let chancesText = document.querySelector("#chances")
+const moneyBox = document.querySelector(".money-box")
+let totalMoneyText = document.querySelector("#total-money")
 const gameBoxes = document.querySelectorAll(".box")
 const stopTesterButton = document.querySelector("#stop-tester")
 const bugCountDisplay = document.querySelector("#bug-count-display")
 const restartButton = document.querySelector("#restart")
+const collectMoneyButton = document.querySelector("#collect")
 
-let mixUpQuestions;
-let currentQuestionIndex;
-let testerChances = 0;
-let questionCount = 0;
+let mixUpQuestions
+let currentQuestionIndex
+let testerChances = 0
+let questionCount = 0
 let totalMoney = 0
 let bugCount = 0
 
@@ -28,7 +29,7 @@ let bugCount = 0
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++;
     getNextQuestion();
-});
+})
 
 // start game -> remove hide class from question and choices
 
@@ -39,13 +40,13 @@ const startGame = () => {
     answerButtons.classList.remove("hide");
     chancesBox.classList.remove("hide")
     getNextQuestion();
-};
+}
 
 // mixing up questions and remove previous choices from container
 const getNextQuestion = () => {
     resetState();
     displayQuestion(mixUpQuestions[currentQuestionIndex]);
-};
+}
 
 //removes previous question buttons and hides the next button
 const resetState = () => {
@@ -290,6 +291,9 @@ function startTester() {
 }
 
 // function to stop the tester from running and to apply conditions
+
+
+
 function stopTester() {
     stopTesterButton.classList.add("hide")
     testerButton.classList.remove("hide")
@@ -302,6 +306,7 @@ function stopTester() {
                 totalMoney += parseInt(boxValue)
                 totalMoneyText.innerText = totalMoney
                 messageBox.innerText = `your code looks good! you got paid $${boxValue} this round`
+                collectMoneyButton.classList.remove("hide")
             }
             else if (boxType === "bug") {
                 bugCount += 1
@@ -309,17 +314,25 @@ function stopTester() {
                 totalMoney = 0
                 totalMoneyText.innerText = totalMoney
                 messageBox.innerHTML = `tester found a <i class="fas fa-bug bug"></i>3 bugs and you lose. Right now you have ${bugCount}`
+                collectMoneyButton.classList.remove("hide")
             }
             else if (boxType === "chance") {
                 testerChances += 1
                 chancesText.innerText = testerChances
                 messageBox.innerText = `you got another chance to press the tester... now you have ${testerChances}`
-
+                collectMoneyButton.classList.remove("hide")
             }
         }
     })
     clearInterval(intervalID)
     gameOver()
+}
+// function to stop playing and collect money
+function quitGame() {
+    messageBox.innerText = `You want to quit, no problem, here's your paycheck of $${totalMoney}. Press Restart to go home`
+    testerButton.classList.add("hide")
+    restartButton.classList.remove("hide")
+    collectMoneyButton.classList.add("hide")
 }
 
 // gameOver function to display winning or loosing messages and restart the game
@@ -341,3 +354,5 @@ function gameOver() {
 testerButton.addEventListener("click", startTester)
 
 stopTesterButton.addEventListener("click", stopTester)
+
+collectMoneyButton.addEventListener("click", quitGame)
