@@ -91,6 +91,7 @@ const selectAnswer = (e) => {
     if (mixUpQuestions.length > currentQuestionIndex + 1 && questionCount < 3) {
         nextButton.classList.remove("hide");
     } else {
+        setTimeout(() => {
         nextButton.classList.add("hide");
         testerButton.classList.remove("hide");
         document.querySelector(".question").classList.add("hide");
@@ -98,6 +99,8 @@ const selectAnswer = (e) => {
         messageBox.classList.remove("hide");
         messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`;
         showGameBoxes();
+        }, 3000)
+
     }
     if (e.target.dataset.correct == "true") {
         questionText.innerText = "Correct Answer!";
