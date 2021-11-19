@@ -57,7 +57,7 @@ Because you are a Software Engineer looking to get paid **BIG BUCKS for** the co
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Vue.js](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [Vanilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Bootstrap](https://getbootstrap.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
