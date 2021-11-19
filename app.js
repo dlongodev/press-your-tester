@@ -28,9 +28,9 @@ let bugCount = 0
 // loading Sounds
 correctSound = new Audio("sounds/correct.mp3")
 wrongSound = new Audio("sounds/wrong.mp3")
-testingSound = new Audio("sounds/glitchy.mp3")
+testingSound = new Audio("sounds/testing-sound.mp3")
 bugSound = new Audio("sounds/coding-bug.mp3")
-chanceSound = new Audio("sounds/tada.mp3")
+chanceSound = new Audio("sounds/chance.mp3")
 moneySound = new Audio("sounds/cha-ching.mp3")
 winSound = new Audio("sounds/applause.mp3")
 loseSound = new Audio("sounds/sad-crowd.mp3")
@@ -40,90 +40,90 @@ quitSound = new Audio("sounds/small-clap.mp3")
 // Multiple Choice Question Round
 
 nextButton.addEventListener("click", () => {
-    currentQuestionIndex++;
-    getNextQuestion();
+    currentQuestionIndex++
+    getNextQuestion()
 })
 
 // start game -> remove hide class from question and choices
 
 const startGame = () => {
-    mixUpQuestions = questions.sort(() => Math.random() - 0.5);
-    currentQuestionIndex = 0;
-    questionContainer.classList.remove("hide");
-    answerButtons.classList.remove("hide");
+    mixUpQuestions = questions.sort(() => Math.random() - 0.5)
+    currentQuestionIndex = 0
+    questionContainer.classList.remove("hide")
+    answerButtons.classList.remove("hide")
     chancesBox.classList.remove("hide")
-    getNextQuestion();
+    getNextQuestion()
 }
 
 // mixing up questions and remove previous choices from container
 const getNextQuestion = () => {
-    resetState();
-    displayQuestion(mixUpQuestions[currentQuestionIndex]);
+    resetState()
+    displayQuestion(mixUpQuestions[currentQuestionIndex])
 }
 
 //removes previous question buttons and hides the next button
 const resetState = () => {
-    nextButton.classList.add("hide");
+    nextButton.classList.add("hide")
 
     while (answerButtons.firstChild) {
-        answerButtons.removeChild(answerButtons.firstChild);
+        answerButtons.removeChild(answerButtons.firstChild)
     }
 
 };
 
 // display the question and set if correct answer
 const displayQuestion = (question) => {
-    questionText.innerText = question.question;
+    questionText.innerText = question.question
     question.answers.forEach((answer) => {
-        const button = document.createElement("button");
+        const button = document.createElement("button")
         button.innerText = answer.text;
-        button.classList.add("answer-btn");
+        button.classList.add("answer-btn")
         if (answer.correct) {
-            button.dataset.correct = answer.correct;
-            button.dataset.chances = answer.chances;
+            button.dataset.correct = answer.correct
+            button.dataset.chances = answer.chances
         } else {
-            button.dataset.chances = answer.chances;
+            button.dataset.chances = answer.chances
         }
-        button.addEventListener("click", selectAnswer);
-        answerButtons.appendChild(button);
+        button.addEventListener("click", selectAnswer)
+        answerButtons.appendChild(button)
     });
 };
 
 // event listener for selecting answer
 const selectAnswer = (e) => {
-    const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct;
-    const chancesAmount = selectedButton.dataset.chances;
-    testerChances += parseInt(chancesAmount);
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    const chancesAmount = selectedButton.dataset.chances
+    testerChances += parseInt(chancesAmount)
     questionCount += 1
     chancesText.innerText = testerChances
-    setStatusClass(document.querySelector(".answer-btn"), correct);
+    setStatusClass(document.querySelector(".answer-btn"), correct)
     Array.from(answerButtons.children).forEach((button) => {
-        setStatusClass(button, button.dataset.correct);
+        setStatusClass(button, button.dataset.correct)
         button.removeEventListener("click", selectAnswer)
     });
     if (mixUpQuestions.length > currentQuestionIndex + 1 && questionCount < 3) {
-        nextButton.classList.remove("hide");
+        nextButton.classList.remove("hide")
     } else {
         setTimeout(() => {
-        nextButton.classList.add("hide");
-        testerButton.classList.remove("hide");
-        document.querySelector(".question").classList.add("hide");
-        answerButtons.classList.add("hide");
-        messageBox.classList.remove("hide");
-        messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`;
-        showGameBoxes();
+            nextButton.classList.add("hide")
+            testerButton.classList.remove("hide")
+            document.querySelector(".question").classList.add("hide")
+            answerButtons.classList.add("hide")
+            messageBox.classList.remove("hide")
+            messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`
+            showGameBoxes()
         }, 2000)
 
     }
     if (e.target.dataset.correct == "true") {
-        questionText.innerText = "Correct Answer!";
+        questionText.innerText = "Correct Answer!"
         correctSound.play();
     } else {
-        questionText.innerText = "Wrong Answer!";
-        wrongSound.play();
+        questionText.innerText = "Wrong Answer!"
+        wrongSound.play()
     }
-};
+}
 
 // remove hide class from game boxes
 const showGameBoxes = () => {
@@ -131,18 +131,18 @@ const showGameBoxes = () => {
         if (box.classList.contains("hide")) {
             box.classList.remove("hide")
         }
-        box.innerText = box.dataset.text;
+        box.innerText = box.dataset.text
     })
 }
 
 // setting styles for right or wrong
 
 const setStatusClass = (element, correct) => {
-    clearStatusClass(element);
+    clearStatusClass(element)
     if (correct) {
-        element.classList.add("correct");
+        element.classList.add("correct")
     } else {
-        element.classList.add("wrong");
+        element.classList.add("wrong")
     }
 };
 
@@ -150,7 +150,7 @@ const setStatusClass = (element, correct) => {
 const clearStatusClass = (element) => {
     element.classList.remove("correct");
     element.classList.remove("wrong");
-};
+}
 
 // set questions in array of objects
 const questions = [
@@ -274,9 +274,9 @@ const questions = [
             { text: "Both are x and y are equal in value only.", correct: false, chances: 1 },
         ],
     },
-];
+]
 
-startGame();
+startGame()
 
 // start Tester Game phase Here
 let boxId, boxValue, boxType
@@ -358,7 +358,6 @@ function quitGame() {
 
 // gameOver function to display winning or loosing messages and restart the game
 function gameOver() {
-    setTimeout(() => {
         if (bugCount === 3) {
             collectMoneyButton.classList.add("hide")
             messageBox.innerText = "You got 3 bugs, you better keep coding, you lost this round!"
@@ -378,8 +377,8 @@ function gameOver() {
             restartButton.classList.remove("hide")
             collectMoneyButton.classList.add("hide")
         }
-    }, 1000)
 }
+
 
 testerButton.addEventListener("click", startTester)
 
