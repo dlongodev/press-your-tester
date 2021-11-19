@@ -1,19 +1,6 @@
 @import url("https://use.typekit.net/jlj3seh.css");
-/* CSS HEX */
-:root {
-  --eerie-black: #191716ff;
-  --naples-yellow: #f9dc5cff;
-  --maximum-blue: #40bcd8ff;
-  --fire-engine-red: #c1292eff;
-  --maximum-red: #d62828ff;
 
-  /* CSS HSL */
-  --eerie-black: hsla(20, 6%, 9%, 1);
-  --naples-yellow: hsla(49, 93%, 67%, 1);
-  --maximum-blue: hsla(191, 66%, 55%, 1);
-  --fire-engine-red: hsla(358, 65%, 46%, 1);
-  --maximum-red: hsla(0, 69%, 50%, 1);
-}
+
 html {
   font-size: 15px;
   height: 100%;
@@ -54,6 +41,21 @@ button:hover {
 .container > div {
   flex: 1;
 }
+
+.audio {
+  max-height: 5rem;
+  font-size: 1.5rem;
+}
+.audio button {
+  color: #fba031;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.audio button:hover {
+  color: hsla(0, 69%, 50%, 1);
+}
+
 
 @keyframes fadein {
   from { opacity: 0;}

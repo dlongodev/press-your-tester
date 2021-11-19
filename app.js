@@ -16,6 +16,9 @@ const stopTesterButton = document.querySelector("#stop-tester")
 const bugCountDisplay = document.querySelector("#bug-count-display")
 const restartButton = document.querySelector("#restart")
 const collectMoneyButton = document.querySelector("#collect")
+const soundOn = document.querySelector("#on")
+const soundOff = document.querySelector("#off")
+
 
 let mixUpQuestions
 let currentQuestionIndex
@@ -23,6 +26,32 @@ let testerChances = 0
 let questionCount = 0
 let totalMoney = 0
 let bugCount = 0
+
+// loading Sounds
+correctSound = new Audio("sounds/correct.mp3")
+wrongSound = new Audio("sounds/wrong.mp3")
+testingSound = new Audio("sounds/clicking.mp3")
+bugSound = new Audio("sounds/coding-bug.mp3")
+chanceSound = new Audio("sounds/tada.mp3")
+moneySound = new Audio("sounds/cha-ching.mp3")
+winSound = new Audio("sounds/applause.mp3")
+loseSound = new Audio("sounds/sad-crowd.mp3")
+quitSound = new Audio("sounds/small-clap.mp3")
+themeSong = new Audio("sounds/theme-music.mp3")
+
+// homepage theme song
+soundOn.addEventListener("click", () => {
+    themeSong.play()
+    themeSong.volume = 0.4
+    soundOff.classList.remove("hide")
+    soundOn.classList.add("hide")
+})
+
+soundOff.addEventListener("click", () => {
+    themeSong.pause()
+    soundOn.classList.remove("hide")
+    soundOff.classList.add("hide")
+})
 
 // Multiple Choice Question Round
 
@@ -100,12 +129,16 @@ const selectAnswer = (e) => {
         messageBox.classList.remove("hide");
         messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`;
         showGameBoxes();
-        }, 3000)
+        }, 2000)
 
     }
     if (e.target.dataset.correct == "true") {
         questionText.innerText = "Correct Answer!";
-    } else { questionText.innerText = "Wrong Answer!"; }
+        correctSound.play();
+    } else {
+        questionText.innerText = "Wrong Answer!";
+        wrongSound.play();
+    }
 };
 
 // remove hide class from game boxes
@@ -270,7 +303,7 @@ let intervalID = null
 function randomLightUpBox() {
     for (let i = 0; i < gameBoxes.length; i++) {
         gameBoxes[i].classList.remove("lit-border")
-
+        testingSound.play()
     }
     // gameBoxes.forEach((box, index) => {
     //     box.classList.remove("lit-border")
@@ -286,6 +319,7 @@ function startTester() {
     chancesText.innerText = testerChances
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
+    collectMoneyButton.classList.add("hide")
     messageBox.innerHTML = `testing code... <img src="imgs/coding1.gif" alt="coding">`
     intervalID = setInterval(randomLightUpBox, 300)
 }
@@ -307,6 +341,7 @@ function stopTester() {
                 totalMoneyText.innerText = totalMoney
                 messageBox.innerText = `your code looks good! you got paid $${boxValue} this round`
                 collectMoneyButton.classList.remove("hide")
+                moneySound.play()
             }
             else if (boxType === "bug") {
                 bugCount += 1
@@ -315,12 +350,14 @@ function stopTester() {
                 totalMoneyText.innerText = totalMoney
                 messageBox.innerHTML = `tester found a <i class="fas fa-bug bug"></i>3 bugs and you lose. Right now you have ${bugCount}`
                 collectMoneyButton.classList.remove("hide")
+                bugSound.play()
             }
             else if (boxType === "chance") {
                 testerChances += 1
                 chancesText.innerText = testerChances
                 messageBox.innerText = `you got another chance to press the tester... now you have ${testerChances}`
                 collectMoneyButton.classList.remove("hide")
+                chanceSound.play()
             }
         }
     })
@@ -333,21 +370,29 @@ function quitGame() {
     testerButton.classList.add("hide")
     restartButton.classList.remove("hide")
     collectMoneyButton.classList.add("hide")
+    quitSound.play()
 }
 
 // gameOver function to display winning or loosing messages and restart the game
 function gameOver() {
     if (bugCount === 3) {
+        collectMoneyButton.classList.add("hide")
         messageBox.innerText = "You got 3 bugs, you better keep coding, you lost this round!"
         testerButton.classList.add("hide")
         restartButton.classList.remove("hide")
+        loseSound.play()
 
     } else if (testerChances === 0) {
         if (totalMoney === 0) {
             messageBox.innerText = `You're out of chances and unfortunately you lost all your Money. keep coding my friend!`
-        } else { messageBox.innerText = `you're out of chances, but good job on your code! You collected $${totalMoney}` }
+            loseSound.play()
+        } else {
+            messageBox.innerText = `you're out of chances, but good job on your code! You collected $${totalMoney}`
+            winSound.play()
+        }
         testerButton.classList.add("hide")
         restartButton.classList.remove("hide")
+        collectMoneyButton.classList.add("hide")
     }
 }
 
