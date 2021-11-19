@@ -1,5 +1,10 @@
 <div id="top"></div>
 
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -45,10 +50,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://dlongodev.github.io/press-your-tester/imgs/screenshots.jpg)
-
 **PRESS YOUR TESTER** is a simple game of luck made for the Web Development Community to have a little fun. 
 Because you are a Software Engineer looking to get paid **BIG BUCKS for** the code you wrote. But before you get paid, you have to **PRESS YOUR TESTER!** *(but with this tester is all about luck!)*. First, you answer 3 multiple choice questions to prove your worth, each correct answer gives you 3 chances with the TESTER, a wrong answer will only get you 1 chance each. This tester can find some **NASTY BUGS!** The goal is to make the most money you can without *"bugging out"* -- 3 BUGS in your code and you lose! GOOD LUCK!
+
+[product-screenshot]: (https://dlongodev.github.io/press-your-tester/imgs/screenshots.jpg)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -83,16 +88,16 @@ Because you are a Software Engineer looking to get paid **BIG BUCKS for** the co
     - [x] As a player, I recognize that the game's aesthetics and design resemble the original game show.   
     - [x] - As a player, I would like to hear sound effects when the tester moves around the board so I can feel the anticipation to PRESS THE TESTER.
 
-- [] **Stretch Goals: Silver**
-    - [] As a player, I would like the UI to be appealing with images indicating the value of each box.
-    - [] As a player, I would like to see each box switching between 3 other values so I can have more random chances to win or lose.
-    - [] - As a player, I would like to see animations and hear sounds so I know when I win or lose the round.
+- [ ] **Stretch Goals: Silver**
+    - [ ] As a player, I would like the UI to be appealing with images indicating the value of each box.
+    - [ ] As a player, I would like to see each box switching between 3 other values so I can have more random chances to win or lose.
+    - [ ] - As a player, I would like to see animations and hear sounds so I know when I win or lose the round.
 
-- [] **Stretch Goals: Gold**
-    - [] As a player, I would like to play this game with a friend and PASS THE TESTER to give my opponent a chance to lose.
-    - [] As a player, I would like to enable my web camera in the middle so the experience looks like the original game show.
-    - [] As a player, I would like to play online so I don't have to have my opponent sitting next to me.
-    - [] As a player, I would like to see a scoreboard showing who is the Software Engineer that got paid the most of all time.
+- [ ] **Stretch Goals: Gold**
+    - [ ] As a player, I would like to play this game with a friend and PASS THE TESTER to give my opponent a chance to lose.
+    - [ ] As a player, I would like to enable my web camera in the middle so the experience looks like the original game show.
+    - [ ] As a player, I would like to play online so I don't have to have my opponent sitting next to me.
+    - [ ] As a player, I would like to see a scoreboard showing who is the Software Engineer that got paid the most of all time.
 
 See the [open issues](https://github.com/dlongodev/press-your-tester/issues) for a full list of proposed features (and known issues).
 
