@@ -1,6 +1,5 @@
 console.log('%c PRESS YOUR TESTER', 'font-weight: bold; font-size: 20px;color: red; text-shadow: 1px 1px 0 rgb(217,31,38) , 3px 3px 0 rgb(226,91,14) , 5px 5px 0 rgb(245,221,8)')
 
-
 const questionContainer = document.querySelector("#question-container")
 const answerButtons = document.querySelector("#answer-buttons")
 const nextButton = document.querySelector("#next-btn")
@@ -16,8 +15,7 @@ const stopTesterButton = document.querySelector("#stop-tester")
 const bugCountDisplay = document.querySelector("#bug-count-display")
 const restartButton = document.querySelector("#restart")
 const collectMoneyButton = document.querySelector("#collect")
-const soundOn = document.querySelector("#on")
-const soundOff = document.querySelector("#off")
+
 
 
 let mixUpQuestions
@@ -37,21 +35,7 @@ moneySound = new Audio("sounds/cha-ching.mp3")
 winSound = new Audio("sounds/applause.mp3")
 loseSound = new Audio("sounds/sad-crowd.mp3")
 quitSound = new Audio("sounds/small-clap.mp3")
-themeSong = new Audio("sounds/theme-music.mp3")
 
-// homepage theme song
-soundOn.addEventListener("click", () => {
-    themeSong.play()
-    themeSong.volume = 0.4
-    soundOff.classList.remove("hide")
-    soundOn.classList.add("hide")
-})
-
-soundOff.addEventListener("click", () => {
-    themeSong.pause()
-    soundOn.classList.remove("hide")
-    soundOff.classList.add("hide")
-})
 
 // Multiple Choice Question Round
 
@@ -304,6 +288,7 @@ function randomLightUpBox() {
     for (let i = 0; i < gameBoxes.length; i++) {
         gameBoxes[i].classList.remove("lit-border")
         testingSound.play()
+        testingSound.volume = 0.5
     }
     // gameBoxes.forEach((box, index) => {
     //     box.classList.remove("lit-border")
@@ -335,13 +320,13 @@ function stopTester() {
         if (box.id == boxId) {
             boxValue = box.dataset.value
             boxType = box.dataset.type
-            console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
             if (boxType === "money") {
                 totalMoney += parseInt(boxValue)
                 totalMoneyText.innerText = totalMoney
                 messageBox.innerText = `your code looks good! you got paid $${boxValue} this round`
                 collectMoneyButton.classList.remove("hide")
                 moneySound.play()
+                moneySound.volume = 0.5
             }
             else if (boxType === "bug") {
                 bugCount += 1
@@ -351,6 +336,7 @@ function stopTester() {
                 messageBox.innerHTML = `tester found a <i class="fas fa-bug bug"></i>3 bugs and you lose. Right now you have ${bugCount}`
                 collectMoneyButton.classList.remove("hide")
                 bugSound.play()
+                bugSound.volume = 0.5
             }
             else if (boxType === "chance") {
                 testerChances += 1
@@ -358,6 +344,7 @@ function stopTester() {
                 messageBox.innerText = `you got another chance to press the tester... now you have ${testerChances}`
                 collectMoneyButton.classList.remove("hide")
                 chanceSound.play()
+                chanceSound.volume = 0.5
             }
         }
     })
@@ -371,6 +358,7 @@ function quitGame() {
     restartButton.classList.remove("hide")
     collectMoneyButton.classList.add("hide")
     quitSound.play()
+    quitSound.volume = 0.5
 }
 
 // gameOver function to display winning or loosing messages and restart the game
