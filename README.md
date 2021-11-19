@@ -1,8 +1,5 @@
 <div id="top"></div>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -12,13 +9,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/dlongodev/press-your-tester">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://dlongodev.github.io/press-your-tester/imgs/press-your-tester_logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">PRESS YOUR TESTER</h3>
 
   <p align="center">
-    Press Your Tester is an HTML, CSS & Vanilla JavaScript game inspired by 1980's TV Show Press Your Luck.
+    Press Your Tester is an HTML, CSS & Vanilla JavaScript game inspired by the 1980's TV Show Press Your Luck.
     <br />
     <a href="https://github.com/dlongodev/press-your-tester"><strong>Explore the docs »</strong></a>
     <br />
@@ -55,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](/imgs/screenshots.jpg)
+[![Product Name Screen Shot][product-screenshot]](https://dlongodev.github.io/press-your-tester/imgs/screenshots.jpg)
 
 PRESS YOUR TESTER is a simple game of luck made for the Web Development Community to have a little fun. 
 Because you are a Software Engineer looking to get paid **BIG BUCKS for** the code you wrote. But before you get paid, you have to **PRESS YOUR TESTER!** *(but with this tester is all about luck!)*. First, you answer 3 multiple choice questions to prove your worth, each correct answer gives you 3 chances with the TESTER, a wrong answer will only get you 1 chance each. This tester can find some **NASTY BUGS!** The goal is to make the most money you can without *"bugging out"* -- 3 BUGS in your code and you lose! GOOD LUCK!
@@ -129,9 +126,9 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/dlongodev) - email@email_client.com
+Your Name - [@dlongodev](https://twitter.com/dlongodev) - dlongodesign@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/dlongodev/press-your-tester)
+Project Link: [https://github.com/dlongodev/press-your-tester](https://github.com/dlongodev/press-your-tester)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -140,7 +137,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [General Assembly SEI-Flex](https://generalassemb.ly/)
+* [General Assembly 9/28 SEI-Flex](https://generalassemb.ly/)
 * Billie Heidelberg - SEI Lead
 * Matt Keane - Instructional Associate
 * Paresh Sharma - Instructional Associate
