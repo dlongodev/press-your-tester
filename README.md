@@ -1,10 +1,4 @@
 <div id="top"></div>
-
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -26,7 +20,7 @@
   </p>
 </div>
 
-[product-screenshot]: https://repository-images.githubusercontent.com/426406080/564c5749-1773-47a2-8e93-cc62cde5543a
+![product-screenshot]: https://repository-images.githubusercontent.com/426406080/564c5749-1773-47a2-8e93-cc62cde5543a
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -53,7 +47,7 @@
 **PRESS YOUR TESTER** is a simple game of luck made for the Web Development Community to have a little fun. 
 Because you are a Software Engineer looking to get paid **BIG BUCKS for** the code you wrote. But before you get paid, you have to **PRESS YOUR TESTER!** *(but with this tester is all about luck!)*. First, you answer 3 multiple choice questions to prove your worth, each correct answer gives you 3 chances with the TESTER, a wrong answer will only get you 1 chance each. This tester can find some **NASTY BUGS!** The goal is to make the most money you can without *"bugging out"* -- 3 BUGS in your code and you lose! GOOD LUCK!
 
-[product-screenshot]: (https://dlongodev.github.io/press-your-tester/imgs/screenshots.jpg)
+![product-screenshot]: (https://dlongodev.github.io/press-your-tester/imgs/screenshots.jpg)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
