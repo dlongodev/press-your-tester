@@ -6,13 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Press Your Tester Game - By Daniele Longo</title>
+    <meta name="description"
+        content="Press Your Tester is a Vanilla Javascript game developed by Daniele Longo, based on the TV show Press Your Luck, as first unit project from General Assembly SEI-Flex Bootcamp" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imgs/favicon.png">
+    <script src="https://kit.fontawesome.com/22317d914d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <main class="container">
+        <div class="audio">
+            <button class="hide" id="off"><i class="fas fa-volume-mute"></i></button>
+            <button id="on"><i class="fas fa-volume-up"></i></button>
+        </div>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#HowToPlay">
             How To Play!
@@ -52,7 +60,7 @@
         <form method="get" action="game.html"><button type="submit" class="play-btn">play</button></form>
     </main>
 
-    <!-- <script src="app.js"></script> -->
+    <script src="script.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

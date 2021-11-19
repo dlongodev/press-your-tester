@@ -1,111 +1,129 @@
-console.log('%c PRESS YOUR TESTER', 'font-weight: bold; font-size: 20px;color: red; text-shadow: 1px 1px 0 rgb(217,31,38) , 3px 3px 0 rgb(226,91,14) , 5px 5px 0 rgb(245,221,8)');
+console.log('%c PRESS YOUR TESTER', 'font-weight: bold; font-size: 20px;color: red; text-shadow: 1px 1px 0 rgb(217,31,38) , 3px 3px 0 rgb(226,91,14) , 5px 5px 0 rgb(245,221,8)')
 
-
-const questionContainer = document.querySelector("#question-container");
-const answerButtons = document.querySelector("#answer-buttons");
-const nextButton = document.querySelector("#next-btn");
-const testerButton = document.querySelector("#tester");
-let questionText = document.querySelector("#question");
-const messageBox = document.querySelector("#message");
-const chancesBox = document.querySelector(".chances-box");
-let chancesText = document.querySelector("#chances");
-const moneyBox = document.querySelector(".money-box");
-let totalMoneyText = document.querySelector("#total-money");
+const questionContainer = document.querySelector("#question-container")
+const answerButtons = document.querySelector("#answer-buttons")
+const nextButton = document.querySelector("#next-btn")
+const testerButton = document.querySelector("#tester")
+let questionText = document.querySelector("#question")
+const messageBox = document.querySelector("#message")
+const chancesBox = document.querySelector(".chances-box")
+let chancesText = document.querySelector("#chances")
+const moneyBox = document.querySelector(".money-box")
+let totalMoneyText = document.querySelector("#total-money")
 const gameBoxes = document.querySelectorAll(".box")
 const stopTesterButton = document.querySelector("#stop-tester")
 const bugCountDisplay = document.querySelector("#bug-count-display")
 const restartButton = document.querySelector("#restart")
+const collectMoneyButton = document.querySelector("#collect")
 
-let mixUpQuestions;
-let currentQuestionIndex;
-let testerChances = 0;
-let questionCount = 0;
+
+
+let mixUpQuestions
+let currentQuestionIndex
+let testerChances = 0
+let questionCount = 0
 let totalMoney = 0
 let bugCount = 0
+
+// loading Sounds
+correctSound = new Audio("sounds/correct.mp3")
+wrongSound = new Audio("sounds/wrong.mp3")
+testingSound = new Audio("sounds/testing-sound.mp3")
+bugSound = new Audio("sounds/coding-bug.mp3")
+chanceSound = new Audio("sounds/chance.mp3")
+moneySound = new Audio("sounds/cha-ching.mp3")
+winSound = new Audio("sounds/applause.mp3")
+loseSound = new Audio("sounds/sad-crowd.mp3")
+quitSound = new Audio("sounds/small-clap.mp3")
+
 
 // Multiple Choice Question Round
 
 nextButton.addEventListener("click", () => {
-    currentQuestionIndex++;
-    getNextQuestion();
-});
+    currentQuestionIndex++
+    getNextQuestion()
+})
 
 // start game -> remove hide class from question and choices
 
 const startGame = () => {
-    mixUpQuestions = questions.sort(() => Math.random() - 0.5);
-    currentQuestionIndex = 0;
-    questionContainer.classList.remove("hide");
-    answerButtons.classList.remove("hide");
+    mixUpQuestions = questions.sort(() => Math.random() - 0.5)
+    currentQuestionIndex = 0
+    questionContainer.classList.remove("hide")
+    answerButtons.classList.remove("hide")
     chancesBox.classList.remove("hide")
-    getNextQuestion();
-};
+    getNextQuestion()
+}
 
 // mixing up questions and remove previous choices from container
 const getNextQuestion = () => {
-    resetState();
-    displayQuestion(mixUpQuestions[currentQuestionIndex]);
-};
+    resetState()
+    displayQuestion(mixUpQuestions[currentQuestionIndex])
+}
 
 //removes previous question buttons and hides the next button
 const resetState = () => {
-    nextButton.classList.add("hide");
+    nextButton.classList.add("hide")
 
     while (answerButtons.firstChild) {
-        answerButtons.removeChild(answerButtons.firstChild);
+        answerButtons.removeChild(answerButtons.firstChild)
     }
 
 };
 
 // display the question and set if correct answer
 const displayQuestion = (question) => {
-    questionText.innerText = question.question;
+    questionText.innerText = question.question
     question.answers.forEach((answer) => {
-        const button = document.createElement("button");
+        const button = document.createElement("button")
         button.innerText = answer.text;
-        button.classList.add("answer-btn");
+        button.classList.add("answer-btn")
         if (answer.correct) {
-            button.dataset.correct = answer.correct;
-            button.dataset.chances = answer.chances;
+            button.dataset.correct = answer.correct
+            button.dataset.chances = answer.chances
         } else {
-            button.dataset.chances = answer.chances;
+            button.dataset.chances = answer.chances
         }
-        button.addEventListener("click", selectAnswer);
-        answerButtons.appendChild(button);
+        button.addEventListener("click", selectAnswer)
+        answerButtons.appendChild(button)
     });
 };
 
 // event listener for selecting answer
 const selectAnswer = (e) => {
-    const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct;
-    const chancesAmount = selectedButton.dataset.chances;
-    testerChances += parseInt(chancesAmount);
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    const chancesAmount = selectedButton.dataset.chances
+    testerChances += parseInt(chancesAmount)
     questionCount += 1
     chancesText.innerText = testerChances
-    setStatusClass(document.querySelector(".answer-btn"), correct);
+    setStatusClass(document.querySelector(".answer-btn"), correct)
     Array.from(answerButtons.children).forEach((button) => {
-        setStatusClass(button, button.dataset.correct);
+        setStatusClass(button, button.dataset.correct)
         button.removeEventListener("click", selectAnswer)
     });
     if (mixUpQuestions.length > currentQuestionIndex + 1 && questionCount < 3) {
-        nextButton.classList.remove("hide");
+        nextButton.classList.remove("hide")
     } else {
         setTimeout(() => {
-        nextButton.classList.add("hide");
-        testerButton.classList.remove("hide");
-        document.querySelector(".question").classList.add("hide");
-        answerButtons.classList.add("hide");
-        messageBox.classList.remove("hide");
-        messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`;
-        showGameBoxes();
-        }, 3000)
+            nextButton.classList.add("hide")
+            testerButton.classList.remove("hide")
+            document.querySelector(".question").classList.add("hide")
+            answerButtons.classList.add("hide")
+            messageBox.classList.remove("hide")
+            messageBox.innerText = `you have ${testerChances} chances to PRESS THE TESTER. Click the tester to begin`
+            showGameBoxes()
+        }, 2000)
 
     }
     if (e.target.dataset.correct == "true") {
-        questionText.innerText = "Correct Answer!";
-    } else { questionText.innerText = "Wrong Answer!"; }
-};
+        questionText.innerText = "Correct Answer!"
+        correctSound.play();
+    } else {
+        questionText.innerText = "Wrong Answer!"
+        wrongSound.play()
+    }
+}
 
 // remove hide class from game boxes
 const showGameBoxes = () => {
@@ -113,18 +131,18 @@ const showGameBoxes = () => {
         if (box.classList.contains("hide")) {
             box.classList.remove("hide")
         }
-        box.innerText = box.dataset.text;
+        box.innerText = box.dataset.text
     })
 }
 
 // setting styles for right or wrong
 
 const setStatusClass = (element, correct) => {
-    clearStatusClass(element);
+    clearStatusClass(element)
     if (correct) {
-        element.classList.add("correct");
+        element.classList.add("correct")
     } else {
-        element.classList.add("wrong");
+        element.classList.add("wrong")
     }
 };
 
@@ -132,7 +150,7 @@ const setStatusClass = (element, correct) => {
 const clearStatusClass = (element) => {
     element.classList.remove("correct");
     element.classList.remove("wrong");
-};
+}
 
 // set questions in array of objects
 const questions = [
@@ -256,9 +274,9 @@ const questions = [
             { text: "Both are x and y are equal in value only.", correct: false, chances: 1 },
         ],
     },
-];
+]
 
-startGame();
+startGame()
 
 // start Tester Game phase Here
 let boxId, boxValue, boxType
@@ -269,11 +287,7 @@ let intervalID = null
 function randomLightUpBox() {
     for (let i = 0; i < gameBoxes.length; i++) {
         gameBoxes[i].classList.remove("lit-border")
-
     }
-    // gameBoxes.forEach((box, index) => {
-    //     box.classList.remove("lit-border")
-    // })
     let randomBox = gameBoxes[Math.floor(Math.random() * 18)]
     randomBox.classList.add("lit-border")
     boxId = randomBox.id
@@ -285,23 +299,29 @@ function startTester() {
     chancesText.innerText = testerChances
     testerButton.classList.add("hide")
     stopTesterButton.classList.remove("hide")
+    collectMoneyButton.classList.add("hide")
     messageBox.innerHTML = `testing code... <img src="imgs/coding1.gif" alt="coding">`
     intervalID = setInterval(randomLightUpBox, 300)
+    testingSound.play()
 }
 
 // function to stop the tester from running and to apply conditions
+
 function stopTester() {
     stopTesterButton.classList.add("hide")
     testerButton.classList.remove("hide")
+    testingSound.pause()
     gameBoxes.forEach(box => {
         if (box.id == boxId) {
             boxValue = box.dataset.value
             boxType = box.dataset.type
-            console.log(`box id: ${boxId}, boxValue: ${boxValue}, boxType: ${boxType}`)
             if (boxType === "money") {
                 totalMoney += parseInt(boxValue)
                 totalMoneyText.innerText = totalMoney
                 messageBox.innerText = `your code looks good! you got paid $${boxValue} this round`
+                collectMoneyButton.classList.remove("hide")
+                moneySound.play()
+                moneySound.volume = 0.5
             }
             else if (boxType === "bug") {
                 bugCount += 1
@@ -309,35 +329,59 @@ function stopTester() {
                 totalMoney = 0
                 totalMoneyText.innerText = totalMoney
                 messageBox.innerHTML = `tester found a <i class="fas fa-bug bug"></i>3 bugs and you lose. Right now you have ${bugCount}`
+                collectMoneyButton.classList.remove("hide")
+                bugSound.play()
+                bugSound.volume = 0.5
             }
             else if (boxType === "chance") {
                 testerChances += 1
                 chancesText.innerText = testerChances
                 messageBox.innerText = `you got another chance to press the tester... now you have ${testerChances}`
-
+                collectMoneyButton.classList.remove("hide")
+                chanceSound.play()
+                chanceSound.volume = 0.5
             }
         }
     })
     clearInterval(intervalID)
     gameOver()
 }
+// function to stop playing and collect money
+function quitGame() {
+    messageBox.innerText = `You want to quit, no problem, here's your paycheck of $${totalMoney}. Press Restart to go home`
+    testerButton.classList.add("hide")
+    restartButton.classList.remove("hide")
+    collectMoneyButton.classList.add("hide")
+    quitSound.play()
+    quitSound.volume = 0.5
+}
 
 // gameOver function to display winning or loosing messages and restart the game
 function gameOver() {
-    if (bugCount === 3) {
-        messageBox.innerText = "You got 3 bugs, you better keep coding, you lost this round!"
-        testerButton.classList.add("hide")
-        restartButton.classList.remove("hide")
+        if (bugCount === 3) {
+            collectMoneyButton.classList.add("hide")
+            messageBox.innerText = "You got 3 bugs, you better keep coding, you lost this round!"
+            testerButton.classList.add("hide")
+            restartButton.classList.remove("hide")
+            loseSound.play()
 
-    } else if (testerChances === 0) {
-        if (totalMoney === 0) {
-            messageBox.innerText = `You're out of chances and unfortunately you lost all your Money. keep coding my friend!`
-        } else { messageBox.innerText = `you're out of chances, but good job on your code! You collected $${totalMoney}` }
-        testerButton.classList.add("hide")
-        restartButton.classList.remove("hide")
-    }
+        } else if (testerChances === 0) {
+            if (totalMoney === 0) {
+                messageBox.innerText = `You're out of chances and unfortunately you lost all your Money. keep coding my friend!`
+                loseSound.play()
+            } else {
+                messageBox.innerText = `you're out of chances, but good job on your code! You collected $${totalMoney}`
+                winSound.play()
+            }
+            testerButton.classList.add("hide")
+            restartButton.classList.remove("hide")
+            collectMoneyButton.classList.add("hide")
+        }
 }
+
 
 testerButton.addEventListener("click", startTester)
 
 stopTesterButton.addEventListener("click", stopTester)
+
+collectMoneyButton.addEventListener("click", quitGame)
