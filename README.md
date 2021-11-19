@@ -1,7 +1,6 @@
 <div id="top"></div>
 
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![Issues][issues-shield]][https://github.com/dlongodev/press-your-tester/issues]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
