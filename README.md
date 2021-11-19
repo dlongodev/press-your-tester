@@ -1,9 +1,5 @@
 <div id="top"></div>
 
-[![Issues][issues-shield]][https://github.com/dlongodev/press-your-tester/issues]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
