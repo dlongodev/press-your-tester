@@ -117,7 +117,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-Your Name - [@dlongodev](https://twitter.com/dlongodev) - dlongodesign@gmail.com
+Daniele Longo - [@dlongodev](https://twitter.com/dlongodev) - dlongodesign@gmail.com
 
 Project Link: [https://github.com/dlongodev/press-your-tester](https://github.com/dlongodev/press-your-tester)
 
