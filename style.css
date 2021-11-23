@@ -97,7 +97,7 @@ img {
   letter-spacing: 0.3rem;
   color: #fff;
   background-color: hsla(0, 69%, 50%, 1);
-  box-shadow: 0rem 0.5rem rgb(165, 34, 39);
+  box-shadow: 0rem 0.5rem hsl(0, 66%, 39%);
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
@@ -113,7 +113,7 @@ img {
 .play-btn:active {
   background-color: hsla(0, 69%, 50%, 1);
   color: #fff;
-  box-shadow: 0rem 0.125rem rgb(165, 34, 39);
+  box-shadow: 0rem 0.125rem hsl(0, 66%, 39%);
   transform: translateY(0.3rem);
 }
 .game-container {
@@ -123,10 +123,10 @@ img {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(5, 6.5rem);
   gap: 1rem;
-  background-color: #d62828ff;
+  background-color: hsl(0, 69%, 50%);
   padding: 1.5rem;
   border-radius: 2.5rem;
-  border: 0.8rem solid rgb(165, 34, 39);
+  border: 0.8rem solid hsl(0, 66%, 39%);
   /* border-width: 20px 20px 20px 20px;
   -moz-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
   -webkit-border-image: url(imgs/border.svg) 100 100 100 100 stretch stretch;
@@ -135,8 +135,8 @@ img {
 
 }
 .box {
-  background-color: rgb(121, 24, 27);
-  border: 0.5rem solid rgb(165, 34, 39);
+  background-color: hsl(0, 67%, 28%);
+  border: 0.5rem solid hsl(0, 66%, 39%);
   border-radius: 1.3rem;
   font-size: 1.5rem;
   color: hsla(49, 93%, 67%, 1);
@@ -150,11 +150,11 @@ img {
 
 
 .question {
-  background-color: rgb(165, 34, 39);
+  background-color: hsl(0, 66%, 39%);
   grid-column: 1 / span 6;
   grid-row: 1 / span 1;
   border-radius: 1.5rem;
-  box-shadow: inset 0 0.3rem 0 rgb(121, 24, 27);
+  box-shadow: inset 0 0.3rem 0 hsl(0, 67%, 28%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,7 +166,7 @@ img {
   grid-column: 2 / span 4;
   grid-row: 2 / span 3;
   background-color: hsla(49, 93%, 67%, 1);
-  border: 0.5rem solid rgb(165, 34, 39);
+  border: 0.5rem solid hsl(0, 66%, 39%);
   border-radius: 1.3rem;
   position: relative;
   display: flex;
@@ -207,14 +207,14 @@ img {
   border-color: hsla(20, 6%, 9%, 1);
 }
 .correct {
-  background-color: rgba(42, 171, 13, 0.8);
-  border-color: rgba(33, 138, 10);
-  color: rgb(213, 244, 200);
+  background-color: hsla(109, 86%, 36%, 0.8);
+  border-color: hsl(109, 86%, 29%);
+  color: hsl(109, 67%, 87%);
 }
 .wrong {
   background-color: hsla(358, 65%, 46%, 0.8);
-  border-color: rgb(121, 24, 27);
-  color: rgb(249, 197, 197);
+  border-color: hsl(0, 67%, 28%);
+  color: hsl(0, 81%, 87%);
 }
 
 
@@ -244,8 +244,8 @@ img {
 
 .home-btn {
   background-color: white;
-  box-shadow: 0px 8px rgb(206, 206, 206);
-  color: hsla(358, 65%, 46%, 1)
+  box-shadow: 0px 8px hsl(0, 0%, 81%);
+  color: hsla(0, 65%, 46%, 1)
 }
 
 .quit-btn {
@@ -264,10 +264,10 @@ img {
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #f7e177, 0 0 30px #fba031, 0 0 40px #fba031, 0 0 50px #fba031, 0 0 55px #fba031;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px hsl(50, 89%, 72%), 0 0 30px hsl(33, 96%, 59%), 0 0 40px hsl(33, 96%, 59%), 0 0 50px hsl(33, 96%, 59%), 0 0 55px hsl(33, 96%, 59%);
   }
   to {
-    text-shadow: 0 0 10px #fff, 0 0 20px #f7e177, 0 0 30px #f7e177, 0 0 40px #f7e177, 0 0 50px #f7e177, 0 0 60px #f7e177, 0 0 70px #f7e177;
+    text-shadow: 0 0 10px #fff, 0 0 20px hsl(50, 89%, 72%), 0 0 30px hsl(50, 89%, 72%), 0 0 40px hsl(50, 89%, 72%), 0 0 50px hsl(50, 89%, 72%), 0 0 60px hsl(50, 89%, 72%), 0 0 70px hsl(50, 89%, 72%);
   }
 }
 
@@ -282,10 +282,10 @@ img {
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
-  background-color: rgb(255, 239, 117);
+  background-color: hsl(49, 100%, 73%);
   padding: 1rem;
   border-radius: 1rem;
-  border: solid hsla(358, 65%, 46%, 1) 0.5rem;
+  border: solid hsl(0, 65%, 46%) 0.5rem;
 }
 
 .control-display {
@@ -300,7 +300,7 @@ img {
   font-style: normal;
   text-transform: uppercase;
   font-size: 2rem;
-  border: 0.8rem solid rgb(234, 202, 64);
+  border: 0.8rem solid hsl(49, 80%, 58%);
   animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -315,7 +315,7 @@ img {
   align-items: center;
   justify-content: flex-start;
   font-size: 2rem;
-  color: rgb(223, 161, 52);
+  color: hsl(38, 73%, 54%);
 }
 
 .money-box {
@@ -325,8 +325,8 @@ img {
 
 .lit-border {
   border-color: hsla(49, 93%, 67%, 1);
-  box-shadow: 0 0 0.8rem 0.2rem rgb(255, 231, 159);
-  text-shadow: rgb(255, 231, 159) 0 0 0.2rem;
+  box-shadow: 0 0 0.8rem 0.2rem hsl(49, 100%, 81%);
+  text-shadow: hsl(49, 100%, 81%) 0 0 0.2rem;
   /* animation: glow 1s ease-in-out infinite alternate; */
   background-color: hsla(20, 6%, 9%, 1);
 }
