@@ -246,8 +246,8 @@ const questions = [
         question: "The default value of “position” attribute is…",
         answers: [
             { text: "fixed", correct: false, chances: 1 },
-            { text: "absolute", correct: false, chances: 1 },
-            { text: "relative", correct: true, chances: 3 },
+            { text: "static", correct: true, chances: 3 },
+            { text: "relative", correct: false, chances: 1 },
         ],
     },
     {
