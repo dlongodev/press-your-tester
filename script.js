@@ -3,10 +3,6 @@ const soundOn = document.querySelector("#on")
 const soundOff = document.querySelector("#off")
 themeSong = new Audio("sounds/theme-music.mp3")
 
-function autoPlay() {
-    themeSong.play(); //play the audio file
-    themeSong.volume = 0.4
-}
 
 // homepage theme song
 soundOn.addEventListener("click", () => {
