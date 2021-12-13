@@ -132,6 +132,8 @@ Project Link: [https://github.com/dlongodev/press-your-tester](https://github.co
 * Billie Heidelberg - SEI Lead
 * Matt Keane - Instructional Associate
 * Paresh Sharma - Instructional Associate
+* Kyle from Web Dev Simplified [Quiz App Tutorial](https://www.youtube.com/c/WebDevSimplified)
+* Ania Kubów for [Wack-A-Mole Tutorial](https://www.youtube.com/c/AniaKub%C3%B3w)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
